@@ -37,14 +37,13 @@ public class AtomScript : MonoBehaviour
     {
         Vector2 force = movementDirection * Time.fixedDeltaTime * movementForce;
 
-
-        rb.AddForce(force);
+        rb.MovePosition(transform.position + new Vector3(force.x, force.y, 0));
+        //rb.AddForce(force);
     }
 
 
     public void OnTranslation(InputValue value)
     {
-        Debug.Log("YALLAH HABIBI");
         movementDirection = value.Get<Vector2>().normalized;
     }
 }
