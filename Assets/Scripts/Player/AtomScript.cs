@@ -15,6 +15,18 @@ public class AtomScript : MonoBehaviour
 
     Rigidbody2D rb;
 
+    public uint getProtons()
+    {
+        return protons;
+    }
+    public uint getNeutrons()
+    {
+        return neutrons;
+    }
+    public uint getElectrons()
+    {
+        return electrons;
+    }
 
     public void addProton(uint n = 1)
     {
