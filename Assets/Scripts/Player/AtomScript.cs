@@ -9,11 +9,27 @@ public class AtomScript : MonoBehaviour
     Vector2 movementDirection = Vector2.zero;
     [SerializeField] float movementForce = 500;
 
-    [SerializeField] int protons = 0;
-    [SerializeField] int neutrons = 0;
-    [SerializeField] int electrons = 0;
+    [SerializeField] uint protons = 0;
+    [SerializeField] uint neutrons = 0;
+    [SerializeField] uint electrons = 0;
 
     Rigidbody2D rb;
+
+
+    public void addProton(uint n = 1)
+    {
+        protons += n;
+    }
+
+    public void addNeutron(uint n = 1)
+    {
+        neutrons += n;
+    }
+
+    public void addElectron(uint n = 1)
+    {
+        electrons += n;
+    }
 
 
     // Start is called before the first frame update
