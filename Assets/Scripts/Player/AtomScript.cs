@@ -19,16 +19,24 @@ public class AtomScript : MonoBehaviour
     public void addProton(uint n = 1)
     {
         protons += n;
+        PrintStatus();
     }
 
     public void addNeutron(uint n = 1)
     {
         neutrons += n;
+        PrintStatus();
     }
 
     public void addElectron(uint n = 1)
     {
         electrons += n;
+        PrintStatus();
+    }
+
+    void PrintStatus()
+    {
+        Debug.Log("Protons: " + protons + " Neutrons: " + neutrons + " Electrons: " + electrons);
     }
 
 
