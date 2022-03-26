@@ -80,14 +80,11 @@ public class ParticleDisplayScript : MonoBehaviour
     TweeningAnimation GetAnimation(TextMeshProUGUI textField)
     {
         TweeningAnimation anim = new TweeningAnimation(this, textField.gameObject);
-        anim
-            .scale(new Vector3(1.25f, 1.25f, 1.25f), 0.2f)
-            .SetEasing(Easing.easeOutSine)
-            .rotate(Quaternion.Euler(0, 0, 5f), 0.2f)
-            .then()
-            .scale(Vector3.one, 0.2f)
-            .SetEasing(Easing.easeInSine)
-            .rotate(Quaternion.Euler(0, 0, 0), 0.2f);
+        anim.scale(Vector3.one, new Vector3(1.25f, 1.25f, 1.25f), 0.4f)
+            .ReturnBack()
+            .rotate(Quaternion.Euler(0,0,0), Quaternion.Euler(0,0,5f), 0.4f)
+            .ReturnBack();
+
         return anim;
     }
 
