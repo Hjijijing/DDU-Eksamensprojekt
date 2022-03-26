@@ -13,6 +13,14 @@ public class AtomScript : MonoBehaviour
     [SerializeField] uint neutrons = 0;
     [SerializeField] uint electrons = 0;
 
+    public delegate void ProtonsAdded(uint before, uint after, uint change, AtomScript atomScript);
+    public ProtonsAdded onProtonsAdded;
+    public delegate void NeutronsAdded(uint before, uint after, uint change, AtomScript atomScript);
+    public NeutronsAdded onNeutronsAdded;
+    public delegate void ElectronsAdded(uint before, uint after, uint change, AtomScript atomScript);
+    public ElectronsAdded onElectronsAdded;
+
+
     Rigidbody2D rb;
 
     public uint getProtons()
@@ -31,18 +39,21 @@ public class AtomScript : MonoBehaviour
     public void addProton(uint n = 1)
     {
         protons += n;
+        onProtonsAdded?.Invoke(protons - n, protons, n, this);
         PrintStatus();
     }
 
     public void addNeutron(uint n = 1)
     {
         neutrons += n;
+        onNeutronsAdded?.Invoke(neutrons - n, neutrons, n, this);
         PrintStatus();
     }
 
     public void addElectron(uint n = 1)
     {
         electrons += n;
+        onElectronsAdded?.Invoke(electrons - n, electrons, n, this);
         PrintStatus();
     }
 
