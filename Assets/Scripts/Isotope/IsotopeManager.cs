@@ -10,8 +10,8 @@ public class IsotopeManager : MonoBehaviour
     [SerializeField] Isotope[] isotopes;
 
 
-    float highestHalflife = float.MinValue;
-    float lowestHalflife = float.MaxValue;
+    public float highestHalflife = float.MinValue;
+    public float lowestHalflife = float.MaxValue;
 
 
     private void Awake()

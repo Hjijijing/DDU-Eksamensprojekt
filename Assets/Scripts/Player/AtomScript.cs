@@ -10,6 +10,8 @@ public class AtomScript : MonoBehaviour
     Vector2 movementDirection = Vector2.zero;
     [SerializeField] float movementForce = 500;
 
+    SpriteRenderer sr;
+
     [SerializeField] uint protons = 0;
     [SerializeField] uint neutrons = 0;
     [SerializeField] uint electrons = 0;
@@ -26,6 +28,10 @@ public class AtomScript : MonoBehaviour
 
     [SerializeField] Vector2 halfLifeRange = Vector2.zero;
     TweeningAnimation isotopeAnimation;
+
+    [SerializeField] float electronProtonBalanceDelay = 5f;
+    [SerializeField] int maxElectronProtonDifference = 1;
+    TweeningAnimation electronProtonAnimation;
 
 
     public uint getProtons()
@@ -45,6 +51,7 @@ public class AtomScript : MonoBehaviour
     {
         protons += n;
         onProtonsAdded?.Invoke(protons - n, protons, n, this);
+        CheckElectronProtonBalance();
         CheckIsotope();
         PrintStatus();
     }
@@ -61,6 +68,7 @@ public class AtomScript : MonoBehaviour
     {
         electrons += n;
         onElectronsAdded?.Invoke(electrons - n, electrons, n, this);
+        CheckElectronProtonBalance();
         PrintStatus();
     }
 
@@ -74,6 +82,7 @@ public class AtomScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -93,6 +102,7 @@ public class AtomScript : MonoBehaviour
 
         rb.MovePosition(transform.position + new Vector3(force.x, force.y, 0));
         //rb.AddForce(force);
+
     }
 
 
@@ -102,18 +112,44 @@ public class AtomScript : MonoBehaviour
     }
 
 
+
+
+    void CheckElectronProtonBalance()
+    {
+        int difference = (int)electrons - (int)protons;
+
+        if(Mathf.Abs(difference) >= maxElectronProtonDifference)
+        {
+            if (electronProtonAnimation != null) return;
+            electronProtonAnimation = new TweeningAnimation(this, gameObject);
+            electronProtonAnimation
+                .colorCallback(Color.green, new Color(0f, 0f, 0f, 0f), (c) => { sr.material.color = c; }, electronProtonBalanceDelay)
+                .then()
+                .call(UnstableForTooLong)
+                .Start();
+        } else
+        {
+            electronProtonAnimation.revert();
+            electronProtonAnimation = null;
+        }
+
+    }
+
     void CheckIsotope()
     {
         Isotope newIsotope = IsotopeManager.isotopeManager.GetIsotope((int)protons, (int)neutrons);
 
         isotopeAnimation?.revert();
 
-        if (newIsotope == null) { Debug.Log("Unknown Isotope");  return; }
         
-        if(newIsotope.half_life != 0f)
+        
+        if(newIsotope == null || newIsotope.half_life != 0f)
         {
             isotopeAnimation = new TweeningAnimation(this, gameObject);
-            float duration = IsotopeManager.isotopeManager.MapHalfLife(newIsotope.half_life, halfLifeRange.x, halfLifeRange.y);
+            float halfLife = IsotopeManager.isotopeManager.lowestHalflife;
+            if (newIsotope != null) halfLife = newIsotope.half_life;
+
+            float duration = IsotopeManager.isotopeManager.MapHalfLife(halfLife, halfLifeRange.x, halfLifeRange.y);
 
             isotopeAnimation
                 //.Wait(duration)
