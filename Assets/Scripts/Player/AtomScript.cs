@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using hjijijing.Tweening;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class AtomScript : MonoBehaviour
@@ -20,8 +21,12 @@ public class AtomScript : MonoBehaviour
     public delegate void ElectronsAdded(uint before, uint after, uint change, AtomScript atomScript);
     public ElectronsAdded onElectronsAdded;
 
-
     Rigidbody2D rb;
+
+
+    [SerializeField] Vector2 halfLifeRange = Vector2.zero;
+    TweeningAnimation isotopeAnimation;
+
 
     public uint getProtons()
     {
@@ -40,6 +45,7 @@ public class AtomScript : MonoBehaviour
     {
         protons += n;
         onProtonsAdded?.Invoke(protons - n, protons, n, this);
+        CheckIsotope();
         PrintStatus();
     }
 
@@ -47,6 +53,7 @@ public class AtomScript : MonoBehaviour
     {
         neutrons += n;
         onNeutronsAdded?.Invoke(neutrons - n, neutrons, n, this);
+        CheckIsotope();
         PrintStatus();
     }
 
@@ -93,4 +100,37 @@ public class AtomScript : MonoBehaviour
     {
         movementDirection = value.Get<Vector2>().normalized;
     }
+
+
+    void CheckIsotope()
+    {
+        Isotope newIsotope = IsotopeManager.isotopeManager.GetIsotope((int)protons, (int)neutrons);
+
+        isotopeAnimation?.revert();
+
+        if (newIsotope == null) { Debug.Log("Unknown Isotope");  return; }
+        
+        if(newIsotope.half_life != 0f)
+        {
+            isotopeAnimation = new TweeningAnimation(this, gameObject);
+            float duration = IsotopeManager.isotopeManager.MapHalfLife(newIsotope.half_life, halfLifeRange.x, halfLifeRange.y);
+
+            isotopeAnimation
+                //.Wait(duration)
+                .scale(Vector3.zero, duration)
+                .from(Vector3.one)
+                .then()
+                .call(UnstableForTooLong);
+
+            isotopeAnimation.Start();
+        }
+
+
+    }
+
+    void UnstableForTooLong()
+    {
+        Debug.Log("Unstable isotope!");
+    }
+
 }
