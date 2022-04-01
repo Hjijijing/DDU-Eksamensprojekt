@@ -6,7 +6,7 @@ public class ElectronScript : ParticleScript
 {
     protected override void OnPlayerCollision(AtomScript player)
     {
-        player.addElectron();
-        Destroy(gameObject);
+        player.addElectron(1,this);
+        captured = true;
     }
 }

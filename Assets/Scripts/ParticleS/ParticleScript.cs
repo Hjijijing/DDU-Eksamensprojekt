@@ -7,6 +7,7 @@ using UnityEngine;
 public abstract class ParticleScript : MonoBehaviour
 {
     [SerializeField] float maxInitialForce = 1000f;
+    public bool captured = false;
 
     private void Start()
     {
@@ -19,6 +20,8 @@ public abstract class ParticleScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        if (captured) return;
+
         if(collider.gameObject.TryGetComponent<AtomScript>(out AtomScript player))
         {
             OnPlayerCollision(player);

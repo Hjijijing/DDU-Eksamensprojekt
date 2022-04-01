@@ -6,7 +6,7 @@ public class NeutronScript : ParticleScript
 {
     protected override void OnPlayerCollision(AtomScript player)
     {
-        player.addNeutron();
-        Destroy(gameObject);
+        player.addNeutron(1,this);
+        captured = true;
     }
 }

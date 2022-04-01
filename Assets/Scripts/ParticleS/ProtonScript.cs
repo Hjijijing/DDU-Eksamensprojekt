@@ -6,7 +6,7 @@ public class ProtonScript : ParticleScript
 {
     protected override void OnPlayerCollision(AtomScript player)
     {
-        player.addProton();
-        Destroy(gameObject);
+        player.addProton(1,this);
+        captured = true;
     }
 }

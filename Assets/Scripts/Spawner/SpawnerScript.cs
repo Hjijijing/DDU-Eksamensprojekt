@@ -6,7 +6,7 @@ public class SpawnerScript : MonoBehaviour
 {
     [SerializeField] AtomScript player;
 
-    List<GameObject> particles = new List<GameObject>();
+    List<ParticleScript> particles = new List<ParticleScript>();
 
     [SerializeField] GameObject[] particlePrefabs;
 
@@ -32,7 +32,11 @@ public class SpawnerScript : MonoBehaviour
     {
         for(int i = particles.Count - 1; i > -1; i--)
         {
-            //If destroyed or to far away
+            if (particles[i].captured)
+            {
+                particles.RemoveAt(i);
+            } else
+            //If destroyed, picked up or to far away
             if (particles[i] == null || Vector3.Distance(particles[i].transform.position, player.transform.position) > maxRadius )
             {
                 Destroy(particles[i].gameObject);
@@ -55,7 +59,8 @@ public class SpawnerScript : MonoBehaviour
             GameObject prefab = particlePrefabs[prefabIndex];
 
             GameObject newParticle = Instantiate(prefab, coordinates, Quaternion.Euler(0, 0, 0));
-            particles.Add(newParticle);
+            ParticleScript ps = newParticle.GetComponent<ParticleScript>();
+            particles.Add(ps);
         }
     }
 }

@@ -47,29 +47,32 @@ public class AtomScript : MonoBehaviour
         return electrons;
     }
 
-    public void addProton(uint n = 1)
+    public void addProton(uint n = 1, ParticleScript particle = null)
     {
         protons += n;
         onProtonsAdded?.Invoke(protons - n, protons, n, this);
         CheckElectronProtonBalance();
         CheckIsotope();
         PrintStatus();
+        CoreParticlePickedUp(particle);
     }
 
-    public void addNeutron(uint n = 1)
+    public void addNeutron(uint n = 1, ParticleScript particle = null)
     {
         neutrons += n;
         onNeutronsAdded?.Invoke(neutrons - n, neutrons, n, this);
         CheckIsotope();
         PrintStatus();
+        CoreParticlePickedUp(particle);
     }
 
-    public void addElectron(uint n = 1)
+    public void addElectron(uint n = 1, ParticleScript particle = null)
     {
         electrons += n;
         onElectronsAdded?.Invoke(electrons - n, electrons, n, this);
         CheckElectronProtonBalance();
         PrintStatus();
+        ShellParticlePickedUp(particle);
     }
 
     void PrintStatus()
@@ -83,6 +86,8 @@ public class AtomScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        StartShellParticleAnimation();
     }
 
     // Update is called once per frame
@@ -163,6 +168,93 @@ public class AtomScript : MonoBehaviour
 
 
     }
+
+
+    void CoreParticlePickedUp(ParticleScript ps)
+    {
+        if (ps == null) return;
+        StartCoreAnimation(ps.gameObject);
+    }
+
+    void StartCoreAnimation(GameObject coreParticle)
+    {
+        Vector3 currentOffset = coreParticle.transform.position - transform.position;
+        float angle = Random.Range(0, Mathf.PI * 2);
+        float r = Random.value;
+
+        Vector3 newOffset = new Vector3(Mathf.Cos(angle) * r,Mathf.Sin(angle)*r,0);
+        newOffset *= coreRadiusStart + ((float)(protons+neutrons))*coreRadiusIncrease;
+
+        new TweeningAnimation(this, coreParticle)
+            .vector3Callback(currentOffset, newOffset, (p) => { coreParticle.transform.position = transform.position + p; }, 0.3f)
+            .SetEasing(Easing.easeInOutSine)
+            .then()
+            .call(() => { StartCoreAnimation(coreParticle); })
+            .Start();
+    }
+
+
+    int[] shellAmounts = new int[] {0,0,0,0,0,0,0 };
+    List<List<ParticleScript>> shells = new List<List<ParticleScript>>() { 
+        new List<ParticleScript>(),
+        new List<ParticleScript>(),
+        new List<ParticleScript>(),
+        new List<ParticleScript>(),
+        new List<ParticleScript>(),
+        new List<ParticleScript>(),
+        new List<ParticleScript>()
+    };
+
+
+    public float innerShellRadius = 1f;
+    public float distanceBetweenShells = 0.1f;
+
+    public float coreRadiusStart = 0.2f;
+    public float coreRadiusIncrease = 0.01f;
+
+    public float shellRotationSpeed = 2 * Mathf.PI;
+
+
+    void ShellParticlePickedUp(ParticleScript ps)
+    {
+        if (ps == null) return;
+
+        int shellNumber = AtomUtil.getOuterShell((int)electrons);
+        shellAmounts[shellNumber - 1]++;
+
+        int numberInShell = shellAmounts[shellNumber - 1];
+
+        shells[shellNumber - 1].Add(ps);
+    }
+
+    
+    void StartShellParticleAnimation()
+    {
+        new TweeningAnimation(this)
+            .floatCallback(0f, Mathf.PI*2, (c) =>
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    int shellNumber = i + 1;
+                    for (int j = 0; j < shells[shellNumber - 1].Count; j++)
+                    {
+                        float angleOffset =(Mathf.PI/7 * i) + j * (Mathf.PI * 2 / (float)shellAmounts[shellNumber - 1]);
+                        float theta = angleOffset + c;
+
+
+                        float r = innerShellRadius + distanceBetweenShells * i;
+
+                        Vector3 pos = transform.position + new Vector3(Mathf.Cos(theta) * r, Mathf.Sin(theta) * r, 0f);
+
+                        shells[i][j].transform.position = pos;
+                    }
+                }
+            }, shellRotationSpeed)
+            .then()
+            .call(StartShellParticleAnimation)
+            .Start();
+    }
+
 
     void UnstableForTooLong()
     {
