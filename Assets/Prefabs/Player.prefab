@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 8716191207954533509}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,6 +220,9 @@ MonoBehaviour:
   protons: 0
   neutrons: 0
   electrons: 0
+  halfLifeRange: {x: 0, y: 0}
+  electronProtonBalanceDelay: 5
+  maxElectronProtonDifference: 1
 --- !u!58 &8716191207954533510
 CircleCollider2D:
   m_ObjectHideFlags: 0
