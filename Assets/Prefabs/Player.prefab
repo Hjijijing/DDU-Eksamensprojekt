@@ -42,7 +42,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -158,9 +158,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.0048570633, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -220,9 +220,14 @@ MonoBehaviour:
   protons: 0
   neutrons: 0
   electrons: 0
-  halfLifeRange: {x: 0, y: 0}
+  halfLifeRange: {x: 3, y: 10}
   electronProtonBalanceDelay: 5
   maxElectronProtonDifference: 1
+  innerShellRadius: 1
+  distanceBetweenShells: 0.3
+  coreRadiusStart: 0.2
+  coreRadiusIncrease: 0.001
+  shellRotationSpeed: 6.2831855
 --- !u!58 &8716191207954533510
 CircleCollider2D:
   m_ObjectHideFlags: 0
