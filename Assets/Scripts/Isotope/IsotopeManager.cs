@@ -5,6 +5,15 @@ using UnityEngine;
 public class IsotopeManager : MonoBehaviour
 {
 
+    public enum PICKUP_FOR_STABLE
+    {
+        PROTON,
+        NEUTRON,
+        ELECTRON,
+        CORE,
+        ANY
+    }
+
     public static IsotopeManager isotopeManager;
 
     [SerializeField] Isotope[] isotopes;
@@ -12,6 +21,10 @@ public class IsotopeManager : MonoBehaviour
 
     public float highestHalflife = float.MinValue;
     public float lowestHalflife = float.MaxValue;
+
+
+
+    
 
 
     private void Awake()
@@ -59,6 +72,38 @@ public class IsotopeManager : MonoBehaviour
 
 
 
+    public PICKUP_FOR_STABLE findPickupForCore(uint protons, uint neutrons)
+    {
+        bool pFound = false;
+        bool nFound = false;
 
+        int pSteps = 1;
+        int nSteps = 1;
+
+        Isotope i;
+
+        while((i = GetIsotope((int)(protons + pSteps), (int)neutrons)) != null)
+        {
+            if (i.half_life == 0) { pFound = true; break; }
+            pSteps++;
+        }
+
+        while ((i = GetIsotope((int)protons, (int)(neutrons+nSteps))) != null)
+        {
+            if (i.half_life == 0) { nFound = true; break; }
+            nSteps++;
+        }
+
+        if (!pFound && !nFound) return PICKUP_FOR_STABLE.CORE;
+        else if (pFound && !nFound) return PICKUP_FOR_STABLE.PROTON;
+        else if (!pFound && nFound) return PICKUP_FOR_STABLE.NEUTRON;
+        else
+        {
+            if (pSteps < nSteps) return PICKUP_FOR_STABLE.PROTON;
+            else if (pSteps > nSteps) return PICKUP_FOR_STABLE.NEUTRON;
+            else return PICKUP_FOR_STABLE.CORE;
+        }
+
+    }
 
 }

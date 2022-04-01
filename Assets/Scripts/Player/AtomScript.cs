@@ -33,6 +33,9 @@ public class AtomScript : MonoBehaviour
     [SerializeField] int maxElectronProtonDifference = 1;
     TweeningAnimation electronProtonAnimation;
 
+    [SerializeField] GameObject countdownPrefab;
+    [SerializeField] GameObject canvas;
+
 
     public uint getProtons()
     {
@@ -142,11 +145,32 @@ public class AtomScript : MonoBehaviour
         {
             if (electronProtonAnimation != null) return;
             electronProtonAnimation = new TweeningAnimation(this, gameObject);
+            Countdown countdown = Instantiate(countdownPrefab, canvas.transform).GetComponent<Countdown>();
+            countdown.y = -100;
+
+            if (electrons > protons)
+                countdown.color = Color.red;
+            else
+                countdown.color = Color.blue;
+
+            float animateInDuration = 0.2f;
+            float animateOutDuration = electronProtonBalanceDelay - animateInDuration;
+
+            countdown.StartAnimationDuration = animateInDuration;
+
+
             electronProtonAnimation
-                .colorCallback(Color.green, new Color(0f, 0f, 0f, 0f), (c) => { sr.material.color = c; }, electronProtonBalanceDelay)
+                .floatCallback(1f, 0, (f) => { countdown.SetFill(f); }, animateOutDuration, animateInDuration)
                 .then()
+                //.colorCallback(Color.green, new Color(0f, 0f, 0f, 0f), (c) => { sr.material.color = c; }, electronProtonBalanceDelay)
+                //.then(electronProtonBalanceDelay)
                 .call(UnstableForTooLong)
                 .Start();
+
+            void destroyCountdown() { countdown.Remove(); electronProtonAnimation.onRevert -= destroyCountdown; };
+
+            electronProtonAnimation.onRevert += destroyCountdown;
+
         } else
         {
             electronProtonAnimation.revert();
@@ -164,19 +188,43 @@ public class AtomScript : MonoBehaviour
         
         
         if(newIsotope == null || newIsotope.half_life != 0f)
-        {
-            isotopeAnimation = new TweeningAnimation(this, gameObject);
+        { 
             float halfLife = IsotopeManager.isotopeManager.lowestHalflife;
             if (newIsotope != null) halfLife = newIsotope.half_life;
 
             float duration = IsotopeManager.isotopeManager.MapHalfLife(halfLife, halfLifeRange.x, halfLifeRange.y);
 
+
+            isotopeAnimation = new TweeningAnimation(this, gameObject);
+            Countdown countdown = Instantiate(countdownPrefab, canvas.transform).GetComponent<Countdown>();
+            countdown.y = -200;
+
+            IsotopeManager.PICKUP_FOR_STABLE whatToPickUp = IsotopeManager.isotopeManager.findPickupForCore(protons, neutrons);
+            Color c = new Color(255f, 140f, 0f);
+            if (whatToPickUp == IsotopeManager.PICKUP_FOR_STABLE.PROTON)
+                c = Color.red;
+            else if (whatToPickUp == IsotopeManager.PICKUP_FOR_STABLE.NEUTRON)
+                c = Color.yellow;
+
+            countdown.color = c;
+
+            float animateInDuration = 0.2f;
+            float animateOutDuration = duration - animateInDuration;
+
+            countdown.StartAnimationDuration = animateInDuration;
+
             isotopeAnimation
-                //.Wait(duration)
-                .scale(Vector3.zero, duration)
-                .from(Vector3.one)
+                .floatCallback(1f, 0, (f) => { countdown.SetFill(f); }, animateOutDuration, animateInDuration)
                 .then()
+                //.Wait(duration)
+                //.scale(Vector3.zero, duration)
+                //.from(Vector3.one)
+                //.then(duration)
                 .call(UnstableForTooLong);
+
+            void destroyCountdown() { countdown.Remove(); isotopeAnimation.onRevert -= destroyCountdown; };
+
+            isotopeAnimation.onRevert += destroyCountdown;
 
             isotopeAnimation.Start();
         }
@@ -274,6 +322,7 @@ public class AtomScript : MonoBehaviour
     void UnstableForTooLong()
     {
         Debug.Log("Unstable isotope!");
+        Time.timeScale = 0;
     }
 
 }

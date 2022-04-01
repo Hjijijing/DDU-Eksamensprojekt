@@ -771,6 +771,25 @@ MonoBehaviour:
   neutronText: {fileID: 46316614}
   electronText: {fileID: 1508873426}
   format: '$particle: $amount'
+--- !u!1 &2051324661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 406707228251203579, guid: d870be9a11e2ee742acdb1cbad3b6523, type: 3}
+  m_PrefabInstance: {fileID: 406707228857374583}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2051324662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051324661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27511222688c3840906c01e4ba62eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  G: 1
+  DistanceScale: 1000
 --- !u!1001 &406707228857374583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -968,5 +987,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1717467889}
+    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
+      propertyPath: countdownPrefab
+      value: 
+      objectReference: {fileID: 2570233297711141614, guid: 9a4c022dc078172499fd35b12318e916, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
