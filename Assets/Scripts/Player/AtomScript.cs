@@ -54,8 +54,8 @@ public class AtomScript : MonoBehaviour
     {
         protons += n;
         onProtonsAdded?.Invoke(protons - n, protons, n, this);
-        CheckElectronProtonBalance();
-        CheckIsotope();
+       // CheckElectronProtonBalance();
+       // CheckIsotope();
         PrintStatus();
         CoreParticlePickedUp(particle);
         UpdateMass();
@@ -65,7 +65,7 @@ public class AtomScript : MonoBehaviour
     {
         neutrons += n;
         onNeutronsAdded?.Invoke(neutrons - n, neutrons, n, this);
-        CheckIsotope();
+        //CheckIsotope();
         PrintStatus();
         CoreParticlePickedUp(particle);
         UpdateMass();
@@ -75,7 +75,7 @@ public class AtomScript : MonoBehaviour
     {
         electrons += n;
         onElectronsAdded?.Invoke(electrons - n, electrons, n, this);
-        CheckElectronProtonBalance();
+        //CheckElectronProtonBalance();
         PrintStatus();
         ShellParticlePickedUp(particle);
         UpdateMass();
@@ -105,7 +105,10 @@ public class AtomScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
 
-        StartShellParticleAnimation();
+        for(int i = 0; i < 7; i++)
+        {
+        StartShellParticleAnimation(i+1);
+        }
     }
 
     // Update is called once per frame
@@ -143,7 +146,8 @@ public class AtomScript : MonoBehaviour
 
         if(Mathf.Abs(difference) >= maxElectronProtonDifference)
         {
-            if (electronProtonAnimation != null) return;
+            electronProtonAnimation?.revert();
+
             electronProtonAnimation = new TweeningAnimation(this, gameObject);
             Countdown countdown = Instantiate(countdownPrefab, canvas.transform).GetComponent<Countdown>();
             countdown.y = -100;
@@ -236,7 +240,10 @@ public class AtomScript : MonoBehaviour
     void CoreParticlePickedUp(ParticleScript ps)
     {
         if (ps == null) return;
-        StartCoreAnimation(ps.gameObject);
+        if (protons + neutrons < maxCoreAnimations)
+            StartCoreAnimation(ps.gameObject);
+        else
+            Destroy(ps.gameObject);
     }
 
     void StartCoreAnimation(GameObject coreParticle)
@@ -246,11 +253,11 @@ public class AtomScript : MonoBehaviour
         float r = Random.value;
 
         Vector3 newOffset = new Vector3(Mathf.Cos(angle) * r,Mathf.Sin(angle)*r,0);
-        newOffset *= coreRadiusStart + ((float)(protons+neutrons))*coreRadiusIncrease;
+        newOffset *= coreRadiusStart + (Mathf.Clamp((float)(protons+neutrons),0,maxCoreAnimations))*coreRadiusIncrease;
 
         new TweeningAnimation(this, coreParticle)
-            .vector3Callback(currentOffset, newOffset, (p) => { coreParticle.transform.position = transform.position + p; }, 0.3f)
-            .SetEasing(Easing.easeInOutSine)
+            .vector3Callback(currentOffset, newOffset, (p) => { coreParticle.transform.position = transform.position + p; }, coreAnimationDuration)
+            .SetEasing(Easing.easeOutSine)
             .then()
             .call(() => { StartCoreAnimation(coreParticle); })
             .Start();
@@ -275,8 +282,12 @@ public class AtomScript : MonoBehaviour
     public float coreRadiusStart = 0.2f;
     public float coreRadiusIncrease = 0.01f;
 
-    public float shellRotationSpeed = 2 * Mathf.PI;
+    // public float[] shellRotationSpeeds = new float[] { 1f, 1f, 1f, 1f, 1f, 1f, 1f };
+    public float shellRotationSpeed = 2f;
 
+
+    public int maxCoreAnimations = 30;
+    public float coreAnimationDuration = 0.3f;
 
     void ShellParticlePickedUp(ParticleScript ps)
     {
@@ -291,30 +302,30 @@ public class AtomScript : MonoBehaviour
     }
 
     
-    void StartShellParticleAnimation()
+    void StartShellParticleAnimation(int shellNumber)
     {
+        int i = shellNumber - 1;
+
+        float r = innerShellRadius + distanceBetweenShells * i;
+
         new TweeningAnimation(this)
             .floatCallback(0f, Mathf.PI*2, (c) =>
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    int shellNumber = i + 1;
-                    for (int j = 0; j < shells[shellNumber - 1].Count; j++)
+                    for (int j = 0; j < shells[i].Count; j++)
                     {
-                        float angleOffset =(Mathf.PI/7 * i) + j * (Mathf.PI * 2 / (float)shellAmounts[shellNumber - 1]);
+                        float angleOffset =(Mathf.PI/7 * i) + j * (Mathf.PI * 2 / (float)shellAmounts[i]);
                         float theta = angleOffset + c;
 
-
-                        float r = innerShellRadius + distanceBetweenShells * i;
+                        
 
                         Vector3 pos = transform.position + new Vector3(Mathf.Cos(theta) * r, Mathf.Sin(theta) * r, 0f);
 
                         shells[i][j].transform.position = pos;
                     }
-                }
-            }, shellRotationSpeed)
+                
+            }, shellRotationSpeed/r)
             .then()
-            .call(StartShellParticleAnimation)
+            .call(()=>StartShellParticleAnimation(shellNumber))
             .Start();
     }
 

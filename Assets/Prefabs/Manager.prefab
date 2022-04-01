@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 406707228251203578}
   - component: {fileID: 406707228251203577}
   - component: {fileID: 406707228251203576}
+  - component: {fileID: 2051324662}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3424,3 +3425,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3eace6cdbfa008a4d8b5a138726142d1, type: 2}
   - {fileID: 11400000, guid: 4169b4312476924479fa5185bfcf6e1e, type: 2}
   - {fileID: 11400000, guid: db5601214587d594d8cf39e11ab135de, type: 2}
+  highestHalflife: 0
+  lowestHalflife: 0
+--- !u!114 &2051324662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406707228251203579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27511222688c3840906c01e4ba62eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  G: 6
+  DistanceScale: 250

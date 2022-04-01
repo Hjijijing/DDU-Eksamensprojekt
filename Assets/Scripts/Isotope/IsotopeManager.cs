@@ -47,6 +47,7 @@ public class IsotopeManager : MonoBehaviour
     {
         foreach(Isotope i in isotopes)
         {
+            if (i.half_life == 0f) continue;
             if (i.half_life < lowestHalflife)
                 lowestHalflife = i.half_life;
             if (i.half_life > highestHalflife)
