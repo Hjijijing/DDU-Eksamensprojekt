@@ -4,29 +4,23 @@ using UnityEngine;
 
 public class Sucking : MonoBehaviour
 {
-    public GameObject player;
-    public float G = 6.7f;
+    public AtomScript player;
     Rigidbody2D rb;
 
 
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player").GetComponent<AtomScript>();
         rb = GetComponent<Rigidbody2D>();
-
     }
 
     void FixedUpdate()
     {
         Vector3 delta = player.transform.position - transform.position;
-        Vector3 force = ((G * 1f * 1f) / delta.sqrMagnitude) * delta.normalized;
-
-
+        Vector3 force = ((ScientificConstants.Constants.G * player.GetMass() * rb.mass) / delta.sqrMagnitude) * delta.normalized;
 
         rb.AddForce(force);
-
-
     }
 }
 

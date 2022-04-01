@@ -15,6 +15,8 @@ public abstract class ParticleScript : MonoBehaviour
 
         Vector2 force = new Vector2(Random.Range(-maxInitialForce, maxInitialForce), Random.Range(-maxInitialForce, maxInitialForce));
         rb.AddForce(force, ForceMode2D.Impulse);
+
+        rb.mass = GetMass();
     }
 
 
@@ -28,7 +30,7 @@ public abstract class ParticleScript : MonoBehaviour
         }
     }
 
-
+    protected abstract float GetMass();
     protected abstract void OnPlayerCollision(AtomScript player);
 
 }

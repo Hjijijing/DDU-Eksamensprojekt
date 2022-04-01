@@ -55,6 +55,7 @@ public class AtomScript : MonoBehaviour
         CheckIsotope();
         PrintStatus();
         CoreParticlePickedUp(particle);
+        UpdateMass();
     }
 
     public void addNeutron(uint n = 1, ParticleScript particle = null)
@@ -64,6 +65,7 @@ public class AtomScript : MonoBehaviour
         CheckIsotope();
         PrintStatus();
         CoreParticlePickedUp(particle);
+        UpdateMass();
     }
 
     public void addElectron(uint n = 1, ParticleScript particle = null)
@@ -73,7 +75,20 @@ public class AtomScript : MonoBehaviour
         CheckElectronProtonBalance();
         PrintStatus();
         ShellParticlePickedUp(particle);
+        UpdateMass();
     }
+
+
+    void UpdateMass()
+    {
+        rb.mass = GetMass();
+    }
+
+    public float GetMass()
+    {
+        return AtomUtil.getMass((int)protons, (int)neutrons, (int)electrons);
+    }
+
 
     void PrintStatus()
     {
