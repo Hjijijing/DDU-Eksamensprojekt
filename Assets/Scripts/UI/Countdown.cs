@@ -20,7 +20,7 @@ public class Countdown : MonoBehaviour
 
     private void Start()
     {
-        new TweeningAnimation(this, gameObject)
+        new TweeningAnimation(this, gameObject, Easing.easeInOutSine)
             .scale(Vector3.one, StartAnimationDuration)
             .from(Vector3.zero)
             .Start();
@@ -36,11 +36,11 @@ public class Countdown : MonoBehaviour
 
     public void Remove()
     {
-        new TweeningAnimation(this, gameObject)
+        new TweeningAnimation(this, gameObject, Easing.easeInOutSine)
             .scale(Vector3.zero, StartAnimationDuration)
             .from(Vector3.one)
             .then()
-            .call(()=> { Destroy(gameObject); })
+            .call(() => { Destroy(gameObject); })
             .Start();
         
     }

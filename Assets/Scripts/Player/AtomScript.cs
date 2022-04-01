@@ -54,9 +54,9 @@ public class AtomScript : MonoBehaviour
     {
         protons += n;
         onProtonsAdded?.Invoke(protons - n, protons, n, this);
-       // CheckElectronProtonBalance();
-       // CheckIsotope();
-        PrintStatus();
+        CheckElectronProtonBalance();
+        CheckIsotope();
+        //PrintStatus();
         CoreParticlePickedUp(particle);
         UpdateMass();
     }
@@ -65,8 +65,8 @@ public class AtomScript : MonoBehaviour
     {
         neutrons += n;
         onNeutronsAdded?.Invoke(neutrons - n, neutrons, n, this);
-        //CheckIsotope();
-        PrintStatus();
+        CheckIsotope();
+        //PrintStatus();
         CoreParticlePickedUp(particle);
         UpdateMass();
     }
@@ -75,8 +75,8 @@ public class AtomScript : MonoBehaviour
     {
         electrons += n;
         onElectronsAdded?.Invoke(electrons - n, electrons, n, this);
-        //CheckElectronProtonBalance();
-        PrintStatus();
+        CheckElectronProtonBalance();
+        //PrintStatus();
         ShellParticlePickedUp(particle);
         UpdateMass();
     }
@@ -157,7 +157,7 @@ public class AtomScript : MonoBehaviour
             else
                 countdown.color = Color.blue;
 
-            float animateInDuration = 0.2f;
+            float animateInDuration = 0.3f;
             float animateOutDuration = electronProtonBalanceDelay - animateInDuration;
 
             countdown.StartAnimationDuration = animateInDuration;
@@ -212,7 +212,7 @@ public class AtomScript : MonoBehaviour
 
             countdown.color = c;
 
-            float animateInDuration = 0.2f;
+            float animateInDuration = 0.3f;
             float animateOutDuration = duration - animateInDuration;
 
             countdown.StartAnimationDuration = animateInDuration;
@@ -323,7 +323,7 @@ public class AtomScript : MonoBehaviour
                         shells[i][j].transform.position = pos;
                     }
                 
-            }, shellRotationSpeed/r)
+            }, (Mathf.PI*2)/(shellRotationSpeed/r))
             .then()
             .call(()=>StartShellParticleAnimation(shellNumber))
             .Start();

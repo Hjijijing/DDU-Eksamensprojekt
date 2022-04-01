@@ -225,18 +225,13 @@ MonoBehaviour:
   maxElectronProtonDifference: 1
   countdownPrefab: {fileID: 2570233297711141614, guid: 9a4c022dc078172499fd35b12318e916, type: 3}
   canvas: {fileID: 0}
-  innerShellRadius: 1
-  distanceBetweenShells: 0.3
+  innerShellRadius: 0.69
+  distanceBetweenShells: 0.4
   coreRadiusStart: 0.2
   coreRadiusIncrease: 0.001
-  shellRotationSpeeds:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  shellRotationSpeed: 2
+  maxCoreAnimations: 50
+  coreAnimationDuration: 0.3
 --- !u!58 &8716191207954533510
 CircleCollider2D:
   m_ObjectHideFlags: 0

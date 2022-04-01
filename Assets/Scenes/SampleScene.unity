@@ -896,10 +896,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1011753953}
-    - target: {fileID: 406707228251203577, guid: d870be9a11e2ee742acdb1cbad3b6523, type: 3}
-      propertyPath: maxParticles
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 406707228251203578, guid: d870be9a11e2ee742acdb1cbad3b6523, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1078,45 +1074,5 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1717467889}
-    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
-      propertyPath: innerShellRadius
-      value: 0.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
-      propertyPath: maxCoreAnimations
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
-      propertyPath: distanceBetweenShells
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
-      propertyPath: shellRotationSpeeds.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
-      propertyPath: shellRotationSpeeds.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
-      propertyPath: shellRotationSpeeds.Array.data[2]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
-      propertyPath: shellRotationSpeeds.Array.data[3]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
-      propertyPath: shellRotationSpeeds.Array.data[4]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
-      propertyPath: shellRotationSpeeds.Array.data[5]
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8716191207954533627, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}
-      propertyPath: shellRotationSpeeds.Array.data[6]
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc210d0e59c1434da73af43b641c730, type: 3}

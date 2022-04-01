@@ -50,7 +50,7 @@ MonoBehaviour:
   - {fileID: 6121954045758665672, guid: 1f556ebe3e6098a41986c9e1bb6274f2, type: 3}
   - {fileID: 2952148639224366456, guid: 55938e120b052ca4f8bb9be1043e0b7a, type: 3}
   - {fileID: 3444461878196505657, guid: 849beddadafc4ec49a0a117b3220e6be, type: 3}
-  maxParticles: 100
+  maxParticles: 200
   minRadius: 10
   maxRadius: 30
 --- !u!114 &406707228251203576
@@ -3440,4 +3440,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   G: 6
-  DistanceScale: 250
+  DistanceScale: 30
