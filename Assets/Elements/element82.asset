@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849f511cdb117c34bab74f2123030eaf, type: 3}
   m_Name: element82
   m_EditorClassIdentifier: 
-  elementName: Lead
+  elementName: Ly
   elementSymbol: Pb
   atomicMass: 2072
   atomicNumber: 82

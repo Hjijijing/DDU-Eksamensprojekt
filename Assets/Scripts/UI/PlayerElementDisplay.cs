@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using hjijijing.Tweening;
 
 public class PlayerElementDisplay : ElementDisplay
 {
     [SerializeField] AtomScript player;
-    bool animate = false;
-
+    [SerializeField]bool animate = false;
+    [SerializeField] float animationScale = 1.25f;
+    [SerializeField] float animationDuration = 0.4f;
+    TweeningAnimation animation;
 
 
     private void Start()
@@ -36,19 +39,34 @@ public class PlayerElementDisplay : ElementDisplay
         setAtomName((int)after);
         setAtomNumber((int)after);
         setMass(atomScript);
-        setColor(atomScript.isotope);
+        setColor((int)atomScript.getProtons());
+        if (animate) Animate();
     }
 
     void ElectronPickup(uint before, uint after, uint change, AtomScript atomScript)
     {
         setElectronConfiguration((int)after);
         setMass(atomScript);
+        if (animate) Animate();
     }
 
     void NeutronPickup(uint before, uint after, uint change, AtomScript atomScript)
     {
         setMass(atomScript);
-        setColor(atomScript.isotope);
+        setColor((int)atomScript.getProtons());
+        if (animate) Animate();
+    }
+
+
+    void Animate()
+    {
+        animation?.Stop();
+
+        animation = this.Tween(gameObject, Easing.easeInOutSine)
+            .scale(new Vector2(animationScale, animationScale), animationDuration)
+            .from(Vector3.one)
+            .ReturnBack(Easing.easeOutSine);
+        animation.Start();
     }
 
 

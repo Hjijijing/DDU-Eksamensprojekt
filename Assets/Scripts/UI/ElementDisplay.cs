@@ -24,15 +24,17 @@ public class ElementDisplay : MonoBehaviour
         setColor(ScientificConstants.Constants.getElementColor(element));
     }
 
-    public void setColor(Isotope isotope)
+    public void setColor(int protons)
     {
-        setColor(ScientificConstants.Constants.getIsotopeColor(isotope));
+        setColor(IsotopeManager.isotopeManager.getElement(protons));
     }
 
     public void setColor(Color color)
     {
         backgroundImage.color = color;
-        borderImage.color = color * 0.5f;
+        Color borderColor = color * 0.5f;
+        borderColor.a = color.a;
+        borderImage.color = borderColor;
     }
 
     public void setAtomNumber(int protons)

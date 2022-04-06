@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849f511cdb117c34bab74f2123030eaf, type: 3}
   m_Name: element55
   m_EditorClassIdentifier: 
-  elementName: Cesium
+  elementName: "C\xE6sium"
   elementSymbol: Cs
   atomicMass: 132905
   atomicNumber: 55

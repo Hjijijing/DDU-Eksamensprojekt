@@ -30,6 +30,8 @@ public class ScientificConstants : MonoBehaviour
     }
     public Color getElementColor(Element element)
     {
+        if (element == null) return Color.white;
+
         switch (element.type)
         {
             case "Nonmetal":

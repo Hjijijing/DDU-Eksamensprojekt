@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 406707228251203578}
   - component: {fileID: 406707228251203577}
-  - component: {fileID: 406707228251203576}
   - component: {fileID: 2051324662}
+  - component: {fileID: 7545956305925866551}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -53,7 +53,32 @@ MonoBehaviour:
   maxParticles: 200
   minRadius: 10
   maxRadius: 30
---- !u!114 &406707228251203576
+--- !u!114 &2051324662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406707228251203579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27511222688c3840906c01e4ba62eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  G: 6
+  DistanceScale: 30
+  nonMetalColor: {r: 0.54901963, g: 0.9294118, b: 0.54901963, a: 1}
+  metalColor: {r: 0.61960787, g: 0.8980393, b: 0.8313726, a: 1}
+  nobleGasColor: {r: 0.8980393, g: 0.7411765, b: 0.8980393, a: 1}
+  alkaliColor: {r: 0.9176471, g: 0.8078432, b: 0.3647059, a: 1}
+  alkaliEarthColor: {r: 0.9450981, g: 0.9450981, b: 0.39607847, a: 1}
+  metalloidColor: {r: 0.61960787, g: 0.8980393, b: 0.8313726, a: 1}
+  transitionMetalColor: {r: 0.9803922, g: 0.7725491, b: 0.7176471, a: 1}
+  halogenColor: {r: 1, g: 1, b: 1, a: 1}
+  lanthanideColor: {r: 0.909804, g: 0.8196079, b: 0.6117647, a: 1}
+  actinideColor: {r: 0.9607844, g: 0.8000001, b: 0.854902, a: 1}
+  transactinideColor: {r: 0.9803922, g: 0.7725491, b: 0.7176471, a: 1}
+--- !u!114 &7545956305925866551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3544,30 +3569,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8c8fce81e67fde40bcbdc4a82c79cd3, type: 2}
   - {fileID: 11400000, guid: 2e36bbb4c095e2b47b44a4d42b143330, type: 2}
   - {fileID: 11400000, guid: 9340c1fc84d124e41abbcade9859de7a, type: 2}
-  highestHalflife: 0
-  lowestHalflife: 0
---- !u!114 &2051324662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 406707228251203579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b27511222688c3840906c01e4ba62eea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  G: 6
-  DistanceScale: 30
-  nonMetalColor: {r: 0.54901963, g: 0.9294118, b: 0.54901963, a: 1}
-  metalColor: {r: 0.61960787, g: 0.8980393, b: 0.8313726, a: 1}
-  nobleGasColor: {r: 0.8980393, g: 0.7411765, b: 0.8980393, a: 1}
-  alkaliColor: {r: 0.9176471, g: 0.8078432, b: 0.3647059, a: 1}
-  alkaliEarthColor: {r: 0.9450981, g: 0.9450981, b: 0.39607847, a: 1}
-  metalloidColor: {r: 0.61960787, g: 0.8980393, b: 0.8313726, a: 1}
-  transitionMetalColor: {r: 0.9803922, g: 0.7725491, b: 0.7176471, a: 1}
-  halogenColor: {r: 1, g: 1, b: 1, a: 1}
-  lanthanideColor: {r: 0.909804, g: 0.8196079, b: 0.6117647, a: 1}
-  actinideColor: {r: 0.9607844, g: 0.8000001, b: 0.854902, a: 1}
-  transactinideColor: {r: 0.9803922, g: 0.7725491, b: 0.7176471, a: 1}
+  highestHalflife: -3.4028235e+38
+  lowestHalflife: 3.4028235e+38

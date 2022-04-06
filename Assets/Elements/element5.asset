@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849f511cdb117c34bab74f2123030eaf, type: 3}
   m_Name: element5
   m_EditorClassIdentifier: 
-  elementName: Boron
+  elementName: Bor
   elementSymbol: B
   atomicMass: 10811
   atomicNumber: 5

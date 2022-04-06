@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849f511cdb117c34bab74f2123030eaf, type: 3}
   m_Name: element9
   m_EditorClassIdentifier: 
-  elementName: Fluorine
+  elementName: Fluor
   elementSymbol: F
   atomicMass: 18998
   atomicNumber: 9

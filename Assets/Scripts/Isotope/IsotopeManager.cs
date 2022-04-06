@@ -36,6 +36,12 @@ public class IsotopeManager : MonoBehaviour
         return null;
     }
 
+    public Element getElement(int protons)
+    {
+        if (protons < 1 || protons > elements.Length) return null;
+        return elements[protons - 1];
+    }
+
     public bool TryGetCorrespondingElement(Isotope isotope, out Element element)
     {
         element = GetCorrespondingElement(isotope);
