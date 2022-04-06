@@ -17,6 +17,7 @@ public class IsotopeManager : MonoBehaviour
     public static IsotopeManager isotopeManager;
 
     [SerializeField] Isotope[] isotopes;
+    [SerializeField] Element[] elements;
 
 
     public float highestHalflife = float.MinValue;
@@ -25,6 +26,20 @@ public class IsotopeManager : MonoBehaviour
 
 
     
+    public Element GetCorrespondingElement(Isotope isotope)
+    {
+        foreach(Element element in elements){
+            if (element.atomicNumber == isotope.z) return element;
+        }
+        return null;
+    }
+
+    public bool TryGetCorrespondingElement(Isotope isotope, out Element element)
+    {
+        element = GetCorrespondingElement(isotope);
+        return element == null;
+    }
+
 
 
     private void Awake()

@@ -9,6 +9,55 @@ public class ScientificConstants : MonoBehaviour
     public float G = 6.7f;
     public float DistanceScale = 1000f;
 
+    public Color nonMetalColor;
+    public Color metalColor;
+    public Color nobleGasColor;
+    public Color alkaliColor;
+    public Color alkaliEarthColor;
+    public Color metalloidColor;
+    public Color transitionMetalColor;
+    public Color halogenColor;
+    public Color lanthanideColor;
+    public Color actinideColor;
+    public Color transactinideColor;
+
+
+    public Color getIsotopeColor(Isotope isotope)
+    {
+        return getElementColor(IsotopeManager.isotopeManager.GetCorrespondingElement(isotope));
+    }
+    public Color getElementColor(Element element)
+    {
+        switch (element.type)
+        {
+            case "Nonmetal":
+                return nonMetalColor;
+            case "Noble Gas":
+                return nobleGasColor;
+            case "Alkali Metal":
+                return alkaliColor;
+            case "Alkali Earth Metal":
+                return alkaliEarthColor;
+            case "Metalloid":
+                return metalloidColor;
+            case "Metal":
+                return metalColor;
+            case "Halogen":
+                return halogenColor;
+            case "Transition Metal":
+                return transitionMetalColor;
+            case "Lanthanide":
+                return lanthanideColor;
+            case "Actinide":
+                return actinideColor;
+            case "Transactinide":
+                return transactinideColor;
+            default:
+                return Color.white;
+        }
+    }
+
+
     private void Awake()
     {
         if(Constants == null)
