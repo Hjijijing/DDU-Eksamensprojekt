@@ -24,7 +24,9 @@ public class ScientificConstants : MonoBehaviour
 
     public Color getIsotopeColor(Isotope isotope)
     {
-        return getElementColor(IsotopeManager.isotopeManager.GetCorrespondingElement(isotope));
+        if (!IsotopeManager.isotopeManager.TryGetCorrespondingElement(isotope, out var element)) 
+            return Color.white;
+        return getElementColor(element);
     }
     public Color getElementColor(Element element)
     {
@@ -36,7 +38,7 @@ public class ScientificConstants : MonoBehaviour
                 return nobleGasColor;
             case "Alkali Metal":
                 return alkaliColor;
-            case "Alkali Earth Metal":
+            case "Alkaline Earth Metal":
                 return alkaliEarthColor;
             case "Metalloid":
                 return metalloidColor;

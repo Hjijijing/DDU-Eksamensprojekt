@@ -36,6 +36,7 @@ public class PlayerElementDisplay : ElementDisplay
         setAtomName((int)after);
         setAtomNumber((int)after);
         setMass(atomScript);
+        setColor(atomScript.isotope);
     }
 
     void ElectronPickup(uint before, uint after, uint change, AtomScript atomScript)
@@ -47,6 +48,7 @@ public class PlayerElementDisplay : ElementDisplay
     void NeutronPickup(uint before, uint after, uint change, AtomScript atomScript)
     {
         setMass(atomScript);
+        setColor(atomScript.isotope);
     }
 
 

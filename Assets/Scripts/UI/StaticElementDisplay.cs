@@ -17,6 +17,7 @@ public class StaticElementDisplay : ElementDisplay
         setSymbol(element.elementSymbol);
         setAtomNumber(element.atomicNumber);
         setElectronConfiguration(element.atomicNumber);
+        setColor(element);
     }
 
 }

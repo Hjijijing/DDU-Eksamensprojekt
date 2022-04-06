@@ -19,6 +19,21 @@ public class ElementDisplay : MonoBehaviour
     [SerializeField] string electronConfigFormat = "$1\n$2\n$3\n$4\n$5\n$6\n$7";
 
 
+    public void setColor(Element element)
+    {
+        setColor(ScientificConstants.Constants.getElementColor(element));
+    }
+
+    public void setColor(Isotope isotope)
+    {
+        setColor(ScientificConstants.Constants.getIsotopeColor(isotope));
+    }
+
+    public void setColor(Color color)
+    {
+        backgroundImage.color = color;
+        borderImage.color = color * 0.5f;
+    }
 
     public void setAtomNumber(int protons)
     {

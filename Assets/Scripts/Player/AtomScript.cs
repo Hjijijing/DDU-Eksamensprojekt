@@ -16,6 +16,8 @@ public class AtomScript : MonoBehaviour
     [SerializeField] uint neutrons = 0;
     [SerializeField] uint electrons = 0;
 
+    public Isotope isotope { get; private set; }
+
     public delegate void ProtonsAdded(uint before, uint after, uint change, AtomScript atomScript);
     public ProtonsAdded onProtonsAdded;
     public delegate void NeutronsAdded(uint before, uint after, uint change, AtomScript atomScript);
@@ -53,32 +55,32 @@ public class AtomScript : MonoBehaviour
     public void addProton(uint n = 1, ParticleScript particle = null)
     {
         protons += n;
-        onProtonsAdded?.Invoke(protons - n, protons, n, this);
         CheckElectronProtonBalance();
         CheckIsotope();
         //PrintStatus();
         CoreParticlePickedUp(particle);
         UpdateMass();
+        onProtonsAdded?.Invoke(protons - n, protons, n, this);
     }
 
     public void addNeutron(uint n = 1, ParticleScript particle = null)
     {
         neutrons += n;
-        onNeutronsAdded?.Invoke(neutrons - n, neutrons, n, this);
         CheckIsotope();
         //PrintStatus();
         CoreParticlePickedUp(particle);
         UpdateMass();
+        onNeutronsAdded?.Invoke(neutrons - n, neutrons, n, this);
     }
 
     public void addElectron(uint n = 1, ParticleScript particle = null)
     {
         electrons += n;
-        onElectronsAdded?.Invoke(electrons - n, electrons, n, this);
         CheckElectronProtonBalance();
         //PrintStatus();
         ShellParticlePickedUp(particle);
         UpdateMass();
+        onElectronsAdded?.Invoke(electrons - n, electrons, n, this);
     }
 
 
@@ -185,6 +187,7 @@ public class AtomScript : MonoBehaviour
     void CheckIsotope()
     {
         Isotope newIsotope = IsotopeManager.isotopeManager.GetIsotope((int)protons, (int)neutrons);
+        isotope = newIsotope;
 
         isotopeAnimation?.revert();
 

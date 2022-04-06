@@ -28,8 +28,10 @@ public class IsotopeManager : MonoBehaviour
     
     public Element GetCorrespondingElement(Isotope isotope)
     {
-        foreach(Element element in elements){
-            if (element.atomicNumber == isotope.z) return element;
+        if (isotope == null) return null;
+        foreach(Element element in elements)
+        {
+           if (element.atomicNumber == isotope.z) return element;
         }
         return null;
     }
@@ -37,7 +39,7 @@ public class IsotopeManager : MonoBehaviour
     public bool TryGetCorrespondingElement(Isotope isotope, out Element element)
     {
         element = GetCorrespondingElement(isotope);
-        return element == null;
+        return element != null;
     }
 
 
