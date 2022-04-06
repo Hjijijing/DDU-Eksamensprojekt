@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a99977dea5349649946fb4fefe0e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementForce: 5
+  startSpeed: 6
   protons: 0
   neutrons: 0
   electrons: 0

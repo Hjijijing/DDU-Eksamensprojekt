@@ -8,7 +8,7 @@ using hjijijing.Tweening;
 public class AtomScript : MonoBehaviour
 {
     Vector2 movementDirection = Vector2.zero;
-    [SerializeField] float movementForce = 500;
+    [SerializeField] float startSpeed = 6;
 
     SpriteRenderer sr;
 
@@ -124,9 +124,10 @@ public class AtomScript : MonoBehaviour
 
     void Move()
     {
-        Vector2 force = movementDirection * Time.fixedDeltaTime * movementForce;
-
-        rb.MovePosition(transform.position + new Vector3(force.x, force.y, 0));
+        Vector2 speed = movementDirection * Time.fixedDeltaTime * startSpeed;
+        
+        
+        rb.MovePosition(transform.position + new Vector3(speed.x, speed.y, 0));
         //rb.AddForce(force);
 
     }
@@ -144,9 +145,11 @@ public class AtomScript : MonoBehaviour
     {
         int difference = (int)electrons - (int)protons;
 
-        if(Mathf.Abs(difference) >= maxElectronProtonDifference)
+        electronProtonAnimation?.revert();
+
+        if (Mathf.Abs(difference) >= maxElectronProtonDifference)
         {
-            electronProtonAnimation?.revert();
+            
 
             electronProtonAnimation = new TweeningAnimation(this, gameObject);
             Countdown countdown = Instantiate(countdownPrefab, canvas.transform).GetComponent<Countdown>();
@@ -175,10 +178,6 @@ public class AtomScript : MonoBehaviour
 
             electronProtonAnimation.onRevert += destroyCountdown;
 
-        } else
-        {
-            electronProtonAnimation.revert();
-            electronProtonAnimation = null;
         }
 
     }
@@ -308,25 +307,21 @@ public class AtomScript : MonoBehaviour
 
         float r = innerShellRadius + distanceBetweenShells * i;
 
-        new TweeningAnimation(this)
-            .floatCallback(0f, Mathf.PI*2, (c) =>
+        TweeningAnimation.Oscillate(this, (Mathf.PI * 2) / (shellRotationSpeed / r), (c) =>
+        {
+            for (int j = 0; j < shells[i].Count; j++)
             {
-                    for (int j = 0; j < shells[i].Count; j++)
-                    {
-                        float angleOffset =(Mathf.PI/7 * i) + j * (Mathf.PI * 2 / (float)shellAmounts[i]);
-                        float theta = angleOffset + c;
+                float angleOffset = (Mathf.PI / 7 * i) + j * (Mathf.PI * 2 / (float)shellAmounts[i]);
+                float theta = angleOffset + c;
 
-                        
 
-                        Vector3 pos = transform.position + new Vector3(Mathf.Cos(theta) * r, Mathf.Sin(theta) * r, 0f);
 
-                        shells[i][j].transform.position = pos;
-                    }
-                
-            }, (Mathf.PI*2)/(shellRotationSpeed/r))
-            .then()
-            .call(()=>StartShellParticleAnimation(shellNumber))
-            .Start();
+                Vector3 pos = transform.position + new Vector3(Mathf.Cos(theta) * r, Mathf.Sin(theta) * r, 0f);
+
+                shells[i][j].transform.position = pos;
+            }
+
+        }).Loop();
     }
 
 
