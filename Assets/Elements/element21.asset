@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Scandium
   elementSymbol: Sc
-  atomicMass: 44956
+  atomicMass: 44.956
   atomicNumber: 21
   numberOfNeutrons: 24
   period: 4

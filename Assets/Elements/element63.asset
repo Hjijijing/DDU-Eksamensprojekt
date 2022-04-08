@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Europium
   elementSymbol: Eu
-  atomicMass: 151964
+  atomicMass: 151.964
   atomicNumber: 63
   numberOfNeutrons: 89
   period: 9

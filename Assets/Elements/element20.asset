@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Calcium
   elementSymbol: Ca
-  atomicMass: 40078
+  atomicMass: 40.078
   atomicNumber: 20
   numberOfNeutrons: 20
   period: 4

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Rubidium
   elementSymbol: Rb
-  atomicMass: 85468
+  atomicMass: 85.468
   atomicNumber: 37
   numberOfNeutrons: 48
   period: 5

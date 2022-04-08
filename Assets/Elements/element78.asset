@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Platin
   elementSymbol: Pt
-  atomicMass: 195084
+  atomicMass: 195.084
   atomicNumber: 78
   numberOfNeutrons: 117
   period: 6

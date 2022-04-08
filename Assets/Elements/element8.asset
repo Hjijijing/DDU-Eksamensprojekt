@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Oxygen
   elementSymbol: O
-  atomicMass: 15999
+  atomicMass: 15.999
   atomicNumber: 8
   numberOfNeutrons: 8
   period: 2

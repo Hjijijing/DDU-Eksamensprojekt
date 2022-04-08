@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Nikkel
   elementSymbol: Ni
-  atomicMass: 58693
+  atomicMass: 58.693
   atomicNumber: 28
   numberOfNeutrons: 31
   period: 4

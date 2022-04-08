@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Fluor
   elementSymbol: F
-  atomicMass: 18998
+  atomicMass: 18.998
   atomicNumber: 9
   numberOfNeutrons: 10
   period: 2

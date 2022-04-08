@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Tungsten
   elementSymbol: W
-  atomicMass: 18384
+  atomicMass: 183.84
   atomicNumber: 74
   numberOfNeutrons: 110
   period: 6

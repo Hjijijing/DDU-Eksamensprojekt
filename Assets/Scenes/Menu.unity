@@ -612,7 +612,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8c8fce81e67fde40bcbdc4a82c79cd3, type: 2}
   - {fileID: 11400000, guid: 2e36bbb4c095e2b47b44a4d42b143330, type: 2}
   - {fileID: 11400000, guid: 9340c1fc84d124e41abbcade9859de7a, type: 2}
-  spacing: {x: 220, y: 220}
-  size: {x: 0, y: 0}
-  margin: {x: 0, y: 0, z: 0, w: 0}
+  spacing: {x: 0, y: 0}
+  size: {x: 1920, y: 1080}
+  margin: {x: 10, y: 10, z: 10, w: 10}
   elementPrefab: {fileID: 3741524524099573581, guid: 5f62866cb5fdf9d4b939b3091ca439f3, type: 3}
+  squareAspect: 1
+  useBoxSize: 0

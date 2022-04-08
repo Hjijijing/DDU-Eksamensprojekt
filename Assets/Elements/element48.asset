@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Cadmium
   elementSymbol: Cd
-  atomicMass: 112411
+  atomicMass: 112.411
   atomicNumber: 48
   numberOfNeutrons: 64
   period: 5

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Chrom
   elementSymbol: Cr
-  atomicMass: 51996
+  atomicMass: 51.996
   atomicNumber: 24
   numberOfNeutrons: 28
   period: 4

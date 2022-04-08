@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Antimon
   elementSymbol: Sb
-  atomicMass: 12176
+  atomicMass: 121.76
   atomicNumber: 51
   numberOfNeutrons: 71
   period: 5

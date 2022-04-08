@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Lithium
   elementSymbol: Li
-  atomicMass: 6941
+  atomicMass: 6.941
   atomicNumber: 3
   numberOfNeutrons: 4
   period: 2

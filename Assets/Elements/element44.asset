@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Ruthenium
   elementSymbol: Ru
-  atomicMass: 10107
+  atomicMass: 101.07
   atomicNumber: 44
   numberOfNeutrons: 57
   period: 5

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Xenon
   elementSymbol: Xe
-  atomicMass: 131293
+  atomicMass: 131.293
   atomicNumber: 54
   numberOfNeutrons: 77
   period: 5

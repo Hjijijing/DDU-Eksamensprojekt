@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Neodym
   elementSymbol: Nd
-  atomicMass: 144242
+  atomicMass: 144.242
   atomicNumber: 60
   numberOfNeutrons: 84
   period: 9

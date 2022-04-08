@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Barium
   elementSymbol: Ba
-  atomicMass: 137327
+  atomicMass: 137.327
   atomicNumber: 56
   numberOfNeutrons: 81
   period: 6

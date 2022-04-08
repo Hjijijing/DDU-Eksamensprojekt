@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Natrium
   elementSymbol: Na
-  atomicMass: 2299
+  atomicMass: 22.99
   atomicNumber: 11
   numberOfNeutrons: 12
   period: 3

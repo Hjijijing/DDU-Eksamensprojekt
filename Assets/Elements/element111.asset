@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849f511cdb117c34bab74f2123030eaf, type: 3}
   m_Name: element111
   m_EditorClassIdentifier: 
-  elementName: '"Roentgenium "'
-  elementSymbol: '"Rg "'
+  elementName: "R\xF8ntgenium"
+  elementSymbol: Rg
   atomicMass: 272
   atomicNumber: 111
   numberOfNeutrons: 161

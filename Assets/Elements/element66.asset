@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Dysprosium
   elementSymbol: Dy
-  atomicMass: 1625
+  atomicMass: 162.5
   atomicNumber: 66
   numberOfNeutrons: 97
   period: 9

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Bor
   elementSymbol: B
-  atomicMass: 10811
+  atomicMass: 10.811
   atomicNumber: 5
   numberOfNeutrons: 6
   period: 2

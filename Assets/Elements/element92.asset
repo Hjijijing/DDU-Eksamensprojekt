@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Uran
   elementSymbol: U
-  atomicMass: 238029
+  atomicMass: 238.029
   atomicNumber: 92
   numberOfNeutrons: 146
   period: 10

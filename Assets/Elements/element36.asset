@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Krypton
   elementSymbol: Kr
-  atomicMass: 83798
+  atomicMass: 83.798
   atomicNumber: 36
   numberOfNeutrons: 48
   period: 4

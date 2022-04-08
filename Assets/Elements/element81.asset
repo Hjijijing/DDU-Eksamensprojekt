@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Tallium
   elementSymbol: Tl
-  atomicMass: 204383
+  atomicMass: 204.383
   atomicNumber: 81
   numberOfNeutrons: 123
   period: 6

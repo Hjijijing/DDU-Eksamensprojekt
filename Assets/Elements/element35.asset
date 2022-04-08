@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Brom
   elementSymbol: Br
-  atomicMass: 79904
+  atomicMass: 79.904
   atomicNumber: 35
   numberOfNeutrons: 45
   period: 4

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Zink
   elementSymbol: Zn
-  atomicMass: 6538
+  atomicMass: 65.38
   atomicNumber: 30
   numberOfNeutrons: 35
   period: 4

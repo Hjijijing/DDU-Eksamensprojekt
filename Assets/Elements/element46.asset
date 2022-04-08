@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Palladium
   elementSymbol: Pd
-  atomicMass: 10642
+  atomicMass: 106.42
   atomicNumber: 46
   numberOfNeutrons: 60
   period: 5

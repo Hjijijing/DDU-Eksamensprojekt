@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Silicium
   elementSymbol: Si
-  atomicMass: 28086
+  atomicMass: 28.086
   atomicNumber: 14
   numberOfNeutrons: 14
   period: 3

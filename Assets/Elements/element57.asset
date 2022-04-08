@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Lanthan
   elementSymbol: La
-  atomicMass: 138905
+  atomicMass: 138.905
   atomicNumber: 57
   numberOfNeutrons: 82
   period: 9

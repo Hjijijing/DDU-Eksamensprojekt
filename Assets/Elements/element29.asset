@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Kopper
   elementSymbol: Cu
-  atomicMass: 63546
+  atomicMass: 63.546
   atomicNumber: 29
   numberOfNeutrons: 35
   period: 4

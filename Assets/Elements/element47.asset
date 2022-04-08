@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: "S\xF8lv"
   elementSymbol: Ag
-  atomicMass: 107868
+  atomicMass: 107.868
   atomicNumber: 47
   numberOfNeutrons: 61
   period: 5

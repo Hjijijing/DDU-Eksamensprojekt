@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Gadolinium
   elementSymbol: Gd
-  atomicMass: 15725
+  atomicMass: 157.25
   atomicNumber: 64
   numberOfNeutrons: 93
   period: 9

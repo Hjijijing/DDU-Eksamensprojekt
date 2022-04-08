@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Indium
   elementSymbol: In
-  atomicMass: 114818
+  atomicMass: 114.818
   atomicNumber: 49
   numberOfNeutrons: 66
   period: 5

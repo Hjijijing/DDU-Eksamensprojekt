@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: "Kviks\xF8lv"
   elementSymbol: Hg
-  atomicMass: 20059
+  atomicMass: 200.59
   atomicNumber: 80
   numberOfNeutrons: 121
   period: 6

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Ytterbium
   elementSymbol: Yb
-  atomicMass: 173054
+  atomicMass: 173.054
   atomicNumber: 70
   numberOfNeutrons: 103
   period: 9

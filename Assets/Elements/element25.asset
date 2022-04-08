@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Mangan
   elementSymbol: Mn
-  atomicMass: 54938
+  atomicMass: 54.938
   atomicNumber: 25
   numberOfNeutrons: 30
   period: 4

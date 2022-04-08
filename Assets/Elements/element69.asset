@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Thulium
   elementSymbol: Tm
-  atomicMass: 168934
+  atomicMass: 168.934
   atomicNumber: 69
   numberOfNeutrons: 100
   period: 9

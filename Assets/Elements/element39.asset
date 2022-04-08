@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Yttrium
   elementSymbol: Y
-  atomicMass: 88906
+  atomicMass: 88.906
   atomicNumber: 39
   numberOfNeutrons: 50
   period: 5

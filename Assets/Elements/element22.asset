@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Titan
   elementSymbol: Ti
-  atomicMass: 47867
+  atomicMass: 47.867
   atomicNumber: 22
   numberOfNeutrons: 26
   period: 4

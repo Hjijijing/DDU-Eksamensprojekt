@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Hydrogen
   elementSymbol: H
-  atomicMass: 1007
+  atomicMass: 1.007
   atomicNumber: 1
   numberOfNeutrons: 0
   period: 1

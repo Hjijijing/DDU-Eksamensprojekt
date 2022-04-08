@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Tin
   elementSymbol: Sn
-  atomicMass: 11871
+  atomicMass: 118.71
   atomicNumber: 50
   numberOfNeutrons: 69
   period: 5

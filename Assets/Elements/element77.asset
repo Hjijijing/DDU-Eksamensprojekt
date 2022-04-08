@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Iridium
   elementSymbol: Ir
-  atomicMass: 192217
+  atomicMass: 192.217
   atomicNumber: 77
   numberOfNeutrons: 115
   period: 6

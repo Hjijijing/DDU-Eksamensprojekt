@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Jern
   elementSymbol: Fe
-  atomicMass: 55845
+  atomicMass: 55.845
   atomicNumber: 26
   numberOfNeutrons: 30
   period: 4

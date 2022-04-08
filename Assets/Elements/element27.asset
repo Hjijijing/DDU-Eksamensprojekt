@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Cobalt
   elementSymbol: Co
-  atomicMass: 58933
+  atomicMass: 58.933
   atomicNumber: 27
   numberOfNeutrons: 32
   period: 4

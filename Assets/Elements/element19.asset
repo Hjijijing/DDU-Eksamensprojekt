@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Kalium
   elementSymbol: K
-  atomicMass: 39098
+  atomicMass: 39.098
   atomicNumber: 19
   numberOfNeutrons: 20
   period: 4

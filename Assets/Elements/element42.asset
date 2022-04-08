@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: "Molybd\xE6n"
   elementSymbol: Mo
-  atomicMass: 9596
+  atomicMass: 95.96
   atomicNumber: 42
   numberOfNeutrons: 54
   period: 5

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Zirkonium
   elementSymbol: Zr
-  atomicMass: 91224
+  atomicMass: 91.224
   atomicNumber: 40
   numberOfNeutrons: 51
   period: 5

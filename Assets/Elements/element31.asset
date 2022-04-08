@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Gallium
   elementSymbol: Ga
-  atomicMass: 69723
+  atomicMass: 69.723
   atomicNumber: 31
   numberOfNeutrons: 39
   period: 4

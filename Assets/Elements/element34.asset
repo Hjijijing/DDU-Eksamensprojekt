@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Selen
   elementSymbol: Se
-  atomicMass: 7896
+  atomicMass: 78.96
   atomicNumber: 34
   numberOfNeutrons: 45
   period: 4

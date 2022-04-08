@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Tantal
   elementSymbol: Ta
-  atomicMass: 180948
+  atomicMass: 180.948
   atomicNumber: 73
   numberOfNeutrons: 108
   period: 6

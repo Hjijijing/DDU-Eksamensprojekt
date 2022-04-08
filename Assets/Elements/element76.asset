@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Osmium
   elementSymbol: Os
-  atomicMass: 19023
+  atomicMass: 190.23
   atomicNumber: 76
   numberOfNeutrons: 114
   period: 6

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Rhenium
   elementSymbol: Re
-  atomicMass: 186207
+  atomicMass: 186.207
   atomicNumber: 75
   numberOfNeutrons: 111
   period: 6

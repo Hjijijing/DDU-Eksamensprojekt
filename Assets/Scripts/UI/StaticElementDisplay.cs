@@ -12,7 +12,7 @@ public class StaticElementDisplay : ElementDisplay
 
     public void UpdateDisplay()
     {
-        setMass(AtomUtil.getMass(element.atomicNumber, element.numberOfNeutrons, element.atomicNumber).ToString());
+        setMass(element.atomicMass.ToString());
         setAtomName(element.elementName);
         setSymbol(element.elementSymbol);
         setAtomNumber(element.atomicNumber);

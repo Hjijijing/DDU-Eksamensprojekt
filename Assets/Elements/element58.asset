@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Cerium
   elementSymbol: Ce
-  atomicMass: 140116
+  atomicMass: 140.116
   atomicNumber: 58
   numberOfNeutrons: 82
   period: 9

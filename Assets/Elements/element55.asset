@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: "C\xE6sium"
   elementSymbol: Cs
-  atomicMass: 132905
+  atomicMass: 132.905
   atomicNumber: 55
   numberOfNeutrons: 78
   period: 6

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Carbon
   elementSymbol: C
-  atomicMass: 12011
+  atomicMass: 12.011
   atomicNumber: 6
   numberOfNeutrons: 6
   period: 2

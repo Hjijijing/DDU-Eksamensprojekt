@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Lutetium
   elementSymbol: Lu
-  atomicMass: 174967
+  atomicMass: 174.967
   atomicNumber: 71
   numberOfNeutrons: 104
   period: 9

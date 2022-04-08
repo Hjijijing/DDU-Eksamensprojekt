@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Tellur
   elementSymbol: Te
-  atomicMass: 1276
+  atomicMass: 127.6
   atomicNumber: 52
   numberOfNeutrons: 76
   period: 5

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Bly
   elementSymbol: Pb
-  atomicMass: 2072
+  atomicMass: 207.2
   atomicNumber: 82
   numberOfNeutrons: 125
   period: 6

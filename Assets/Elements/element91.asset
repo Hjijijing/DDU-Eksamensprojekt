@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Protactinium
   elementSymbol: Pa
-  atomicMass: 231036
+  atomicMass: 231.036
   atomicNumber: 91
   numberOfNeutrons: 140
   period: 10

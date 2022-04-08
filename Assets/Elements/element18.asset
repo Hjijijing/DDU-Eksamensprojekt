@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Argon
   elementSymbol: Ar
-  atomicMass: 39948
+  atomicMass: 39.948
   atomicNumber: 18
   numberOfNeutrons: 22
   period: 3

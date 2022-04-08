@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Svovl
   elementSymbol: S
-  atomicMass: 32065
+  atomicMass: 32.065
   atomicNumber: 16
   numberOfNeutrons: 16
   period: 3

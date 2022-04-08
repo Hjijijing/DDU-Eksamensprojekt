@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Nitrogen
   elementSymbol: N
-  atomicMass: 14007
+  atomicMass: 14.007
   atomicNumber: 7
   numberOfNeutrons: 7
   period: 2

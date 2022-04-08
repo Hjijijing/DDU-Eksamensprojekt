@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Magnesium
   elementSymbol: Mg
-  atomicMass: 24305
+  atomicMass: 24.305
   atomicNumber: 12
   numberOfNeutrons: 12
   period: 3

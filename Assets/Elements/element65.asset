@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Terbium
   elementSymbol: Tb
-  atomicMass: 158925
+  atomicMass: 158.925
   atomicNumber: 65
   numberOfNeutrons: 94
   period: 9

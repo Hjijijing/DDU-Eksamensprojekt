@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Niobium
   elementSymbol: Nb
-  atomicMass: 92906
+  atomicMass: 92.906
   atomicNumber: 41
   numberOfNeutrons: 52
   period: 5

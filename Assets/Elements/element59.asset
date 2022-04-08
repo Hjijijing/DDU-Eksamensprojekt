@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Praseodym
   elementSymbol: Pr
-  atomicMass: 140908
+  atomicMass: 140.908
   atomicNumber: 59
   numberOfNeutrons: 82
   period: 9

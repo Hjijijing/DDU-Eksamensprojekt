@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Beryllium
   elementSymbol: Be
-  atomicMass: 9012
+  atomicMass: 9.012
   atomicNumber: 4
   numberOfNeutrons: 5
   period: 2

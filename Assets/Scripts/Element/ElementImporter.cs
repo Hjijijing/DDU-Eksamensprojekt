@@ -31,7 +31,7 @@ public class ElementImporter : MonoBehaviour
             element.elementSymbol = values[2];
             element.phase = values[9];
             element.type = values[15];
-            element.atomicMass = float.Parse(values[3]);
+            element.atomicMass = float.Parse(values[3].Replace(".",","));
             element.atomicNumber = int.Parse(values[0]);
             element.numberOfNeutrons = int.Parse(values[4]);
             element.period = int.TryParse(values[7], out int period) ? period : -1;

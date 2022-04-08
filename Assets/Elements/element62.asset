@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Samarium
   elementSymbol: Sm
-  atomicMass: 15036
+  atomicMass: 150.36
   atomicNumber: 62
   numberOfNeutrons: 88
   period: 9

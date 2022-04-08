@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Neon
   elementSymbol: Ne
-  atomicMass: 2018
+  atomicMass: 20.18
   atomicNumber: 10
   numberOfNeutrons: 10
   period: 2

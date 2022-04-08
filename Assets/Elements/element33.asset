@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Arsen
   elementSymbol: As
-  atomicMass: 74922
+  atomicMass: 74.922
   atomicNumber: 33
   numberOfNeutrons: 42
   period: 4

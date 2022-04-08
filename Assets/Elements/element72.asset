@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Hafnium
   elementSymbol: Hf
-  atomicMass: 17849
+  atomicMass: 178.49
   atomicNumber: 72
   numberOfNeutrons: 106
   period: 6

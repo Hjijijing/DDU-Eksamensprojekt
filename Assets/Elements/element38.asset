@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Strontium
   elementSymbol: Sr
-  atomicMass: 8762
+  atomicMass: 87.62
   atomicNumber: 38
   numberOfNeutrons: 50
   period: 5

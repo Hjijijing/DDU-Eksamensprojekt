@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Germanium
   elementSymbol: Ge
-  atomicMass: 7264
+  atomicMass: 72.64
   atomicNumber: 32
   numberOfNeutrons: 41
   period: 4

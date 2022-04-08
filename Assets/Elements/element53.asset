@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Iod
   elementSymbol: I
-  atomicMass: 126904
+  atomicMass: 126.904
   atomicNumber: 53
   numberOfNeutrons: 74
   period: 5

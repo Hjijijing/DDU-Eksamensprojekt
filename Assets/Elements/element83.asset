@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Bismuth
   elementSymbol: Bi
-  atomicMass: 20898
+  atomicMass: 208.98
   atomicNumber: 83
   numberOfNeutrons: 126
   period: 6

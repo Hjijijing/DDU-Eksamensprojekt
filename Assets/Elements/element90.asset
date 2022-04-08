@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Thorium
   elementSymbol: Th
-  atomicMass: 232038
+  atomicMass: 232.038
   atomicNumber: 90
   numberOfNeutrons: 142
   period: 10

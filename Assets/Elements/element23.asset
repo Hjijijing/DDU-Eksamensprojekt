@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Vanadium
   elementSymbol: V
-  atomicMass: 50942
+  atomicMass: 50.942
   atomicNumber: 23
   numberOfNeutrons: 28
   period: 4

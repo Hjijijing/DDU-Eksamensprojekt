@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Chlor
   elementSymbol: Cl
-  atomicMass: 35453
+  atomicMass: 35.453
   atomicNumber: 17
   numberOfNeutrons: 18
   period: 3

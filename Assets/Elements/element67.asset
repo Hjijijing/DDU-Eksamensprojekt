@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Holmium
   elementSymbol: Ho
-  atomicMass: 16493
+  atomicMass: 164.93
   atomicNumber: 67
   numberOfNeutrons: 98
   period: 9

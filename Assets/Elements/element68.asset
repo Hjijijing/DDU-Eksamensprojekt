@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Erbium
   elementSymbol: Er
-  atomicMass: 167259
+  atomicMass: 167.259
   atomicNumber: 68
   numberOfNeutrons: 99
   period: 9

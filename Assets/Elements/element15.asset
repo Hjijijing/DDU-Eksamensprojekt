@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Phosphor
   elementSymbol: P
-  atomicMass: 30974
+  atomicMass: 30.974
   atomicNumber: 15
   numberOfNeutrons: 16
   period: 3

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Guld
   elementSymbol: Au
-  atomicMass: 196967
+  atomicMass: 196.967
   atomicNumber: 79
   numberOfNeutrons: 118
   period: 6

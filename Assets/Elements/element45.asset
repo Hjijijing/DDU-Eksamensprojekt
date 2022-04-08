@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Rhodium
   elementSymbol: Rh
-  atomicMass: 102906
+  atomicMass: 102.906
   atomicNumber: 45
   numberOfNeutrons: 58
   period: 5

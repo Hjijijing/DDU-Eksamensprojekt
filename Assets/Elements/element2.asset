@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementName: Helium
   elementSymbol: He
-  atomicMass: 4002
+  atomicMass: 4.002
   atomicNumber: 2
   numberOfNeutrons: 2
   period: 1
