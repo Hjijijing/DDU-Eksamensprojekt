@@ -62,7 +62,7 @@ public class PlayerElementDisplay : ElementDisplay
     {
         animation?.Stop();
 
-        animation = this.Tween(gameObject, Easing.easeInOutSine)
+        animation = this.Tween(Easing.easeInOutSine)
             .scale(new Vector2(animationScale, animationScale), animationDuration)
             .from(Vector3.one)
             .ReturnBack(Easing.easeOutSine);

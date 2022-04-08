@@ -17,7 +17,7 @@ MonoBehaviour:
   atomicMass: 145
   atomicNumber: 61
   numberOfNeutrons: 84
-  period: 6
-  group: -1
+  period: 9
+  group: 8
   phase: artificial
   type: Lanthanide

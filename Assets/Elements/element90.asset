@@ -17,7 +17,7 @@ MonoBehaviour:
   atomicMass: 232038
   atomicNumber: 90
   numberOfNeutrons: 142
-  period: 7
-  group: -1
+  period: 10
+  group: 5
   phase: solid
   type: Actinide

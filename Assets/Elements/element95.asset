@@ -17,7 +17,7 @@ MonoBehaviour:
   atomicMass: 243
   atomicNumber: 95
   numberOfNeutrons: 148
-  period: 7
-  group: -1
+  period: 10
+  group: 10
   phase: artificial
   type: Actinide

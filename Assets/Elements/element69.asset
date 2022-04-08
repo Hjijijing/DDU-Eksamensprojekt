@@ -17,7 +17,7 @@ MonoBehaviour:
   atomicMass: 168934
   atomicNumber: 69
   numberOfNeutrons: 100
-  period: 6
-  group: -1
+  period: 9
+  group: 16
   phase: solid
   type: Lanthanide
