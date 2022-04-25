@@ -11,6 +11,7 @@ public class PeriodicTable : MonoBehaviour
     [SerializeField] Quaternion margin;
     [SerializeField] GameObject elementPrefab;
     [SerializeField] bool squareAspect = true;
+    [SerializeField] bool centerAspect = true;
     [SerializeField] bool useBoxSize = false;
 
     List<StaticElementDisplay> displays = new List<StaticElementDisplay>();
@@ -53,13 +54,21 @@ public class PeriodicTable : MonoBehaviour
         float elementSizeX = (tableWidth - ((margin.x + margin.z) + (groupAmount - 1) * spacing.x)) / groupAmount;
         float elementSizeY = (tableHeight - ((margin.y + margin.w) + (periodAmount - 1) * spacing.y)) / periodAmount;
 
+        float offsetX = 0f;
+        float offsetY = 0f;
+
         if (squareAspect)
         {
             if (elementSizeX > elementSizeY)
             {
+                if(centerAspect)
+                offsetX = (tableWidth - (elementSizeY*groupAmount + spacing.x * (groupAmount-1) + margin.x + margin.z)) / 2f;
                 elementSizeX = elementSizeY;
+
             } else
             {
+                if(centerAspect)
+                offsetY = (tableHeight - (elementSizeX * periodAmount + spacing.y * (periodAmount - 1) + margin.y + margin.w)) / 2f;
                 elementSizeY = elementSizeX;
             }
         }
@@ -72,8 +81,8 @@ public class PeriodicTable : MonoBehaviour
             int x = element.group - 1;
             int y = element.period - 1;
 
-            float posX = margin.x + spacing.x * x + elementSizeX * x;
-            float posY = -(margin.y + spacing.y * y + elementSizeY * y);
+            float posX = margin.x + spacing.x * x + elementSizeX * x + offsetX;
+            float posY = -(margin.y + spacing.y * y + elementSizeY * y + offsetY);
 
             GameObject elementObject = Instantiate(elementPrefab, transform);
             elementObject.AddComponent<ButtonEffect>();
@@ -100,7 +109,8 @@ public class PeriodicTable : MonoBehaviour
     void OnClick(StaticElementDisplay sed)
     {
         GameManager.gameManager.targetElement = sed.Element;
-        GameManager.gameManager.StartGame();
+        //GameManager.gameManager.StartGame();
+        sed.UnLock();
     }
 
 #if UNITY_EDITOR

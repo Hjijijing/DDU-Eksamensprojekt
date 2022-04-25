@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using hjijijing.Tweening;
 
 public class ElementDisplay : MonoBehaviour
 {
 
-    [SerializeField] Image backgroundImage;
-    [SerializeField] Image borderImage;
+    [SerializeField] protected Image backgroundImage;
+    [SerializeField] protected Image borderImage;
 
-    [SerializeField] TextMeshProUGUI mass;
-    [SerializeField] TextMeshProUGUI symbol;
-    [SerializeField] TextMeshProUGUI atomName;
-    [SerializeField] TextMeshProUGUI atomNumber;
-    [SerializeField] TextMeshProUGUI electronConfiguration;
+    [SerializeField] protected TextMeshProUGUI mass;
+    [SerializeField] protected TextMeshProUGUI symbol;
+    [SerializeField] protected TextMeshProUGUI atomName;
+    [SerializeField] protected TextMeshProUGUI atomNumber;
+    [SerializeField] protected TextMeshProUGUI electronConfiguration;
     [TextArea]
-    [SerializeField] string electronConfigFormat = "$1\n$2\n$3\n$4\n$5\n$6\n$7";
+    [SerializeField] protected string electronConfigFormat = "$1\n$2\n$3\n$4\n$5\n$6\n$7";
 
 
     public void setColor(Element element)
@@ -100,6 +101,10 @@ public class ElementDisplay : MonoBehaviour
 
         electronConfiguration.text = result;
     }
+
+
+
+    
 
 
 

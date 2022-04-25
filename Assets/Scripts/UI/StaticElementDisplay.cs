@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using hjijijing.Tweening;
 
 public class StaticElementDisplay : ElementDisplay, IPointerClickHandler
 {
@@ -35,6 +36,33 @@ public class StaticElementDisplay : ElementDisplay, IPointerClickHandler
             setColor(ScientificConstants.Constants.lockedColor);
         else
             base.setColor(element);
+    }
+
+
+
+    public void UnLock()
+    {
+        transform.SetAsLastSibling();
+        Quaternion rot1 = Quaternion.Euler(0f, 0f, 30f);
+        Quaternion rot2 = Quaternion.Euler(0f, 0f, 0f);
+        Quaternion rot3 = Quaternion.Euler(0f, 0f, -30f);
+        Vector3 originalScale = transform.localScale;
+        Vector3 position = transform.position;
+
+        this.Tween(Easing.easeInOutSine)
+            .move(() => { return position + new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 1f); }, 0.05f)
+            .Repeat(38);
+
+        this.Tween(Easing.easeInOutSine)
+            //.scale(originalScale*2, 2f)
+            .then(2f)
+            .colorCallback(ScientificConstants.Constants.lockedColor, ScientificConstants.Constants.getElementColor(element), (c)=> { backgroundImage.color = c; }, 0.5f)
+            .scale(originalScale*1.5f, 0.5f)
+            .ReturnBack()
+            //.scale(originalScale, 1f)
+            .then()
+            .move(position, 0.05f)
+            .Start();
     }
 
 }
