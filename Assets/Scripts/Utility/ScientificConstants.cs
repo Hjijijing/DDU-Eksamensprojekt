@@ -20,6 +20,7 @@ public class ScientificConstants : MonoBehaviour
     public Color lanthanideColor;
     public Color actinideColor;
     public Color transactinideColor;
+    public Color lockedColor;
 
 
     public Color getIsotopeColor(Isotope isotope)

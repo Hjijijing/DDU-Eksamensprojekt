@@ -13,7 +13,7 @@ public class PeriodicTable : MonoBehaviour
     [SerializeField] bool squareAspect = true;
     [SerializeField] bool useBoxSize = false;
 
-
+    List<StaticElementDisplay> displays = new List<StaticElementDisplay>();
 
 
     // Start is called before the first frame update
@@ -89,8 +89,18 @@ public class PeriodicTable : MonoBehaviour
             if (elementObject.TryGetComponent(out StaticElementDisplay display))
             {
                 display.Element = element;
+                display.onElementPressed += OnClick;
+                displays.Add(display);
             }
         }
+    }
+
+
+
+    void OnClick(StaticElementDisplay sed)
+    {
+        GameManager.gameManager.targetElement = sed.Element;
+        GameManager.gameManager.StartGame();
     }
 
 #if UNITY_EDITOR
@@ -107,4 +117,12 @@ public class PeriodicTable : MonoBehaviour
     }
 #endif 
 
+
+    private void OnDestroy()
+    {
+        foreach(StaticElementDisplay sed in displays)
+        {
+            sed.onElementPressed -= OnClick;
+        }
+    }
 }

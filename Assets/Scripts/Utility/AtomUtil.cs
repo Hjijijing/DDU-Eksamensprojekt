@@ -41,6 +41,7 @@ public class AtomUtil
     public static string getAtomSymbol(int protonAmount)
     {
         if (protonAmount == 0) return "n";
+        if (protonAmount > 118) return "N/A";
         return IsotopeManager.isotopeManager.getElement(protonAmount).elementSymbol;
     }
 

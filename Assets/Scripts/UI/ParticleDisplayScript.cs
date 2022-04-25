@@ -13,7 +13,7 @@ public class ParticleDisplayScript : MonoBehaviour
     TweeningAnimation neutronAnimation;
     [SerializeField] TextMeshProUGUI electronText;
     TweeningAnimation electronAnimation;
-    [SerializeField] string format = "$particle: $amount";
+    [SerializeField] string format = "$particle: $amount/$required";
 
 
     private void Start()
@@ -22,9 +22,9 @@ public class ParticleDisplayScript : MonoBehaviour
         player.onNeutronsAdded += UpdateNeutrons;
         player.onProtonsAdded += UpdateProtons;
 
-        UpdateText(protonText, "Protons", player.getProtons());
-        UpdateText(neutronText, "Neutrons", player.getNeutrons());
-        UpdateText(electronText, "Electrons", player.getElectrons());
+        UpdateText(protonText, "Protons", player.getProtons(), GameManager.gameManager.targetElement.atomicNumber);
+        UpdateText(electronText, "Electrons", player.getElectrons(), GameManager.gameManager.targetElement.atomicNumber);
+        UpdateText(neutronText, "Neutrons", player.getNeutrons(), GameManager.gameManager.targetElement.numberOfNeutrons);
     }
 
 
@@ -38,7 +38,7 @@ public class ParticleDisplayScript : MonoBehaviour
 
     void UpdateProtons(uint before, uint after, uint change, AtomScript atomScript)
     {
-        UpdateText(protonText, "Protons", after);
+        UpdateText(protonText, "Protons", after, GameManager.gameManager.targetElement.atomicNumber);
 
         if (protonAnimation != null)
             protonAnimation.Stop();
@@ -50,7 +50,7 @@ public class ParticleDisplayScript : MonoBehaviour
 
     void UpdateElectrons(uint before, uint after, uint change, AtomScript atomScript)
     {
-        UpdateText(electronText, "Electrons", after);
+        UpdateText(electronText, "Electrons", after, GameManager.gameManager.targetElement.atomicNumber);
 
         if (electronAnimation != null)
             electronAnimation.Stop();
@@ -61,7 +61,7 @@ public class ParticleDisplayScript : MonoBehaviour
 
     void UpdateNeutrons(uint before, uint after, uint change, AtomScript atomScript)
     {
-        UpdateText(neutronText, "Neutrons", after);
+        UpdateText(neutronText, "Neutrons", after, GameManager.gameManager.targetElement.numberOfNeutrons);
 
         if (neutronAnimation != null)
             neutronAnimation.Stop();
@@ -70,9 +70,9 @@ public class ParticleDisplayScript : MonoBehaviour
         neutronAnimation.Start();
     }
 
-    void UpdateText(TextMeshProUGUI field, string particle, uint amount)
+    void UpdateText(TextMeshProUGUI field, string particle, uint amount, int required)
     {
-        string text = format.Replace("$particle", particle).Replace("$amount", amount.ToString());
+        string text = format.Replace("$particle", particle).Replace("$amount", amount.ToString()).Replace("$required", required.ToString()) ;
         field.text = text;
     }
 

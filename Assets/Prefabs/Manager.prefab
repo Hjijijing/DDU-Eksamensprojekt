@@ -78,6 +78,7 @@ MonoBehaviour:
   lanthanideColor: {r: 0.909804, g: 0.8196079, b: 0.6117647, a: 1}
   actinideColor: {r: 0.9607844, g: 0.8000001, b: 0.854902, a: 1}
   transactinideColor: {r: 0.9803922, g: 0.7725491, b: 0.7176471, a: 1}
+  lockedColor: {r: 0.53333336, g: 0.53333336, b: 0.53333336, a: 1}
 --- !u!114 &7545956305925866551
 MonoBehaviour:
   m_ObjectHideFlags: 0
