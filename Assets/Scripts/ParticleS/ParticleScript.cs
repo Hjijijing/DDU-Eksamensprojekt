@@ -22,6 +22,8 @@ public abstract class ParticleScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        if (!GameManager.gameManager.isRunning) return;
+
         if (captured) return;
 
         if(collider.gameObject.TryGetComponent<AtomScript>(out AtomScript player))

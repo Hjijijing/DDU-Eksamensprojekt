@@ -18,7 +18,7 @@ public class PeriodicTable : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         CreateTable();
     }
@@ -109,8 +109,7 @@ public class PeriodicTable : MonoBehaviour
     void OnClick(StaticElementDisplay sed)
     {
         GameManager.gameManager.targetElement = sed.Element;
-        //GameManager.gameManager.StartGame();
-        sed.UnLock();
+        GameManager.gameManager.StartGame();
     }
 
 #if UNITY_EDITOR
@@ -134,5 +133,16 @@ public class PeriodicTable : MonoBehaviour
         {
             sed.onElementPressed -= OnClick;
         }
+    }
+
+
+    public StaticElementDisplay GetElement(int atomicNumber)
+    {
+        foreach(StaticElementDisplay sed in displays)
+        {
+            if (sed.Element.atomicNumber == atomicNumber) return sed;
+        }
+
+        return null;
     }
 }

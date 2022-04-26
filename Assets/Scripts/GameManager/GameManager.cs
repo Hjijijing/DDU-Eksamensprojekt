@@ -16,8 +16,16 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
 
     [SerializeField] Object gameScene;
+    [SerializeField] Object menuScene;
 
     AtomScript player;
+
+    [SerializeField] GameObject winScreen;
+    [SerializeField] GameObject loseScreen;
+
+    List<int> queuedLockAnimations = new List<int>();
+
+    public bool isRunning { private set; get; }
 
 
     public int[] unlockedElements { private set; get; }
@@ -29,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     public bool elementIsUnlocked(int element)
     {
+        if (queuedLockAnimations.Contains(element)) return false;
+
         foreach(int e in unlockedElements)
         {
             if (e == element) return true;
@@ -38,7 +48,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public bool isRunning { private set; get; }
+    
 
     private void Awake()
     {
@@ -47,6 +57,7 @@ public class GameManager : MonoBehaviour
             gameManager = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += GameLoaded;
+            SceneManager.sceneLoaded += MenuLoaded;
 
 
             unlockedElements = Storage.GetData("UnlockedElements", new int[] { });
@@ -56,10 +67,38 @@ public class GameManager : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(menuScene.name);
+    }
+
+    public void RestartLevel()
+    {
+        StartGame();
+    }
 
     public void StartGame()
     {
         SceneManager.LoadScene(gameScene.name);
+        isRunning = true;
+    }
+
+    void MenuLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != menuScene.name) return;
+
+        if(queuedLockAnimations.Count > 0)
+        {
+            PeriodicTable table = FindObjectOfType<PeriodicTable>();
+            foreach(int atomicNumber in queuedLockAnimations)
+            {
+                StaticElementDisplay sed = table.GetElement(atomicNumber);
+                Debug.Log(sed);
+                sed?.UnLock();
+            }
+
+            queuedLockAnimations.Clear();
+        }
     }
 
     void GameLoaded(Scene scene, LoadSceneMode mode)
@@ -73,17 +112,41 @@ public class GameManager : MonoBehaviour
 
     public void EndGame(EndCondition condition)
     {
+        isRunning = false;
+        player.electronProtonAnimation?.revert();
+        player.isotopeAnimation?.revert();
+
+
         switch (condition)
         {
             case EndCondition.WIN:
-                Debug.Log("You won");
-                Time.timeScale = 0;
-                unlockedElements = new List<int>(unlockedElements) { targetElement.atomicNumber }.ToArray();
-                Storage.SaveData(unlockedElements, "UnlockedElements");
+                Win();
                 break;
             case EndCondition.LOSS:
+                Lose();
                 break;
         }
+    }
+
+
+    void Win()
+    {
+        Debug.Log("You won");
+        //Time.timeScale = 0;
+        if (!elementIsUnlocked(targetElement))
+        {
+        unlockedElements = new List<int>(unlockedElements) { targetElement.atomicNumber }.ToArray();
+        Storage.SaveData(unlockedElements, "UnlockedElements");
+        queuedLockAnimations.Add(targetElement.atomicNumber);
+        }
+
+        GameObject screen = Instantiate(winScreen, FindObjectOfType<Canvas>().gameObject.transform);
+    }
+
+    void Lose()
+    {
+        Debug.Log("You lost");
+        GameObject screen = Instantiate(loseScreen, FindObjectOfType<Canvas>().gameObject.transform);
     }
 
 
@@ -91,6 +154,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameManager != this) return;
         SceneManager.sceneLoaded -= GameLoaded;
+        SceneManager.sceneLoaded -= MenuLoaded;
         if (player == null) return;
         player.onElectronsAdded -= ElectronPickedUp;
         player.onNeutronsAdded -= NeutronPickedUp;
@@ -122,6 +186,16 @@ public class GameManager : MonoBehaviour
             EndGame(EndCondition.WIN);
         }
     }
+
+
+
+
+
+
+
+
+
+
 
 
 }

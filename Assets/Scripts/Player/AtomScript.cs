@@ -29,11 +29,11 @@ public class AtomScript : MonoBehaviour
 
 
     [SerializeField] Vector2 halfLifeRange = Vector2.zero;
-    TweeningAnimation isotopeAnimation;
+    public TweeningAnimation isotopeAnimation;
 
     [SerializeField] float electronProtonBalanceDelay = 5f;
     [SerializeField] int maxElectronProtonDifference = 1;
-    TweeningAnimation electronProtonAnimation;
+    public TweeningAnimation electronProtonAnimation;
 
     [SerializeField] GameObject countdownPrefab;
     [SerializeField] GameObject canvas;
@@ -126,6 +126,8 @@ public class AtomScript : MonoBehaviour
 
     void Move()
     {
+        if (!GameManager.gameManager.isRunning) return;
+
         Vector2 speed = movementDirection * Time.fixedDeltaTime * startSpeed;
         
         
@@ -284,7 +286,7 @@ public class AtomScript : MonoBehaviour
     public float coreRadiusStart = 0.2f;
     public float coreRadiusIncrease = 0.01f;
 
-    // public float[] shellRotationSpeeds = new float[] { 1f, 1f, 1f, 1f, 1f, 1f, 1f };
+    //public float[] shellRotationSpeeds = new float[] { 1f, 1f, 1f, 1f, 1f, 1f, 1f };
     public float shellRotationSpeed = 2f;
 
 
@@ -331,7 +333,7 @@ public class AtomScript : MonoBehaviour
     void UnstableForTooLong()
     {
         Debug.Log("Unstable isotope!");
-        Time.timeScale = 0;
+        GameManager.gameManager.EndGame(EndCondition.LOSS);
     }
 
 }
