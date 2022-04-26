@@ -5,6 +5,8 @@ using UnityEngine;
 public class NeutronScript : ParticleScript
 {
 
+    public override float charge { get; set; } = 0;
+
     protected override float GetMass()
     {
         return AtomUtil.getMass(0, 1, 0);

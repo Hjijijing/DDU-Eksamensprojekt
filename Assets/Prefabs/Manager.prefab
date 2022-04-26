@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   G: 6
+  kc: 8
   DistanceScale: 30
   nonMetalColor: {r: 0.54901963, g: 0.9294118, b: 0.54901963, a: 1}
   metalColor: {r: 0.61960787, g: 0.8980393, b: 0.8313726, a: 1}

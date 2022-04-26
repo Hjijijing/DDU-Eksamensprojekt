@@ -56,7 +56,7 @@ public class StaticElementDisplay : ElementDisplay, IPointerClickHandler
         this.Tween(Easing.easeInOutSine)
             .scale(originalScale*1.2f, 0.2f, 0f, 1.8f)
             .then()
-            .colorCallback(ScientificConstants.Constants.lockedColor, ScientificConstants.Constants.getElementColor(element), (c)=> { backgroundImage.color = c; }, 0.5f)
+            .colorCallback(ScientificConstants.Constants.lockedColor, ScientificConstants.Constants.getElementColor(element), setColor, 0.5f)
             .scale(originalScale*2f, 0.25f)
             .then()
             .scale(originalScale, 0.25f)

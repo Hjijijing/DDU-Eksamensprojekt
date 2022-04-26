@@ -6,8 +6,9 @@ public class ScientificConstants : MonoBehaviour
 {
     public static ScientificConstants Constants;
 
-    public float G = 6.7f;
-    public float DistanceScale = 1000f;
+    public float G = 6.7f; //Gravitationskonstant
+    public float kc = 8f; //Coulomb konstant 
+    public float DistanceScale = 1000f; //Hvor meget 1 unity enhed svarer til i fysisk afstand.
 
     public Color nonMetalColor;
     public Color metalColor;

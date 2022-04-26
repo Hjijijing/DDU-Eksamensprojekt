@@ -8,6 +8,7 @@ public abstract class ParticleScript : MonoBehaviour
 {
     [SerializeField] float maxInitialForce = 1000f;
     public bool captured = false;
+    public abstract float charge { get; set; }
 
     private void Start()
     {

@@ -5,6 +5,10 @@ using UnityEngine;
 public class ElectronScript : ParticleScript
 {
 
+
+
+    public override float charge { get; set; } = -1f;
+
     protected override float GetMass()
     {
         return AtomUtil.getMass(0, 0, 1);

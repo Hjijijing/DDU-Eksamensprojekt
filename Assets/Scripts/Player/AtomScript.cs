@@ -52,6 +52,12 @@ public class AtomScript : MonoBehaviour
         return electrons;
     }
 
+
+    public float getCharge()
+    {
+        return (float)getProtons() - (float)getElectrons();
+    }
+
     public void addProton(uint n = 1, ParticleScript particle = null)
     {
         protons += n;
