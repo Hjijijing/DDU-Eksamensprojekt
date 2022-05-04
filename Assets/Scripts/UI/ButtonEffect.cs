@@ -8,7 +8,7 @@ public class ButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 {
     TweeningAnimation buttonAnimation;
     [SerializeField] float animationDuration = 0.05f;
-    [SerializeField] float effect = 1.3f;
+    [SerializeField] public float effect = 1.3f;
     
     
     Vector3 originalScale;

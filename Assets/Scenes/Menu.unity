@@ -357,10 +357,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 7545956305925866551, guid: d870be9a11e2ee742acdb1cbad3b6523, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d870be9a11e2ee742acdb1cbad3b6523, type: 3}
 --- !u!1 &1118014037
@@ -610,8 +606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetElement: {fileID: 0}
-  gameScene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
-  menuScene: {fileID: 102900000, guid: 01acaeba08e48c04fa6a744a2ca2d91c, type: 3}
+  gameSceneIndex: 1
+  menuSceneIndex: 0
   winScreen: {fileID: 5156863645795707044, guid: 2e79376edf56126449d4ed0fd74e642a, type: 3}
   loseScreen: {fileID: 5513822371698313545, guid: e34bf0c665d06504ba86b88545eda774, type: 3}
 --- !u!4 &1266649116

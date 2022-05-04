@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager gameManager;
 
-    [SerializeField] Object gameScene;
-    [SerializeField] Object menuScene;
+    [SerializeField] int gameSceneIndex;
+    [SerializeField] int menuSceneIndex;
 
     AtomScript player;
 
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene(menuScene.name);
+        SceneManager.LoadScene(menuSceneIndex);
     }
 
     public void RestartLevel()
@@ -79,13 +79,13 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(gameScene.name);
+        SceneManager.LoadScene(gameSceneIndex);
         isRunning = true;
     }
 
     void MenuLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != menuScene.name) return;
+        if (scene.buildIndex != menuSceneIndex) return;
 
         if(queuedLockAnimations.Count > 0)
         {
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
 
     void GameLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != gameScene.name) return;
+        if (scene.buildIndex != gameSceneIndex) return;
         player = FindObjectOfType<AtomScript>();
         player.onElectronsAdded += ElectronPickedUp;
         player.onNeutronsAdded += NeutronPickedUp;

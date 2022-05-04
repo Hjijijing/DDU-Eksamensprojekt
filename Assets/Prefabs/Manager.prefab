@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   G: 6
-  kc: 8
+  kc: 0
   DistanceScale: 30
   nonMetalColor: {r: 0.54901963, g: 0.9294118, b: 0.54901963, a: 1}
   metalColor: {r: 0.61960787, g: 0.8980393, b: 0.8313726, a: 1}
@@ -78,7 +78,7 @@ MonoBehaviour:
   halogenColor: {r: 1, g: 1, b: 1, a: 1}
   lanthanideColor: {r: 0.909804, g: 0.8196079, b: 0.6117647, a: 1}
   actinideColor: {r: 0.9607844, g: 0.8000001, b: 0.854902, a: 1}
-  transactinideColor: {r: 0.9803922, g: 0.7725491, b: 0.7176471, a: 1}
+  unknownColor: {r: 0.9333334, g: 0.9333334, b: 0.9333334, a: 1}
   lockedColor: {r: 0.53333336, g: 0.53333336, b: 0.53333336, a: 1}
 --- !u!114 &7545956305925866551
 MonoBehaviour:

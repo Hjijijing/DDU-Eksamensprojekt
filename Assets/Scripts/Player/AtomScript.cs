@@ -32,6 +32,8 @@ public class AtomScript : MonoBehaviour
     public TweeningAnimation isotopeAnimation;
 
     [SerializeField] float electronProtonBalanceDelay = 5f;
+    [SerializeField] float electronProtonDelayFalloff = 1f;
+    [SerializeField] float electronProtonMinimumDelay = 1f;
     [SerializeField] int maxElectronProtonDifference = 1;
     public TweeningAnimation electronProtonAnimation;
 
@@ -58,8 +60,9 @@ public class AtomScript : MonoBehaviour
         return (float)getProtons() - (float)getElectrons();
     }
 
-    public void addProton(uint n = 1, ParticleScript particle = null)
+    public bool addProton(uint n = 1, ParticleScript particle = null)
     {
+        if (protons + n > AtomUtil.HIGHESTATOM || protons + n > GameManager.gameManager.targetElement.atomicNumber) return false;
         protons += n;
         CheckElectronProtonBalance();
         CheckIsotope();
@@ -67,26 +70,31 @@ public class AtomScript : MonoBehaviour
         CoreParticlePickedUp(particle);
         UpdateMass();
         onProtonsAdded?.Invoke(protons - n, protons, n, this);
+        return true;
     }
 
-    public void addNeutron(uint n = 1, ParticleScript particle = null)
+    public bool addNeutron(uint n = 1, ParticleScript particle = null)
     {
+        if (neutrons + n > GameManager.gameManager.targetElement.numberOfNeutrons) return false;
         neutrons += n;
         CheckIsotope();
         //PrintStatus();
         CoreParticlePickedUp(particle);
         UpdateMass();
         onNeutronsAdded?.Invoke(neutrons - n, neutrons, n, this);
+        return true;
     }
 
-    public void addElectron(uint n = 1, ParticleScript particle = null)
+    public bool addElectron(uint n = 1, ParticleScript particle = null)
     {
+        if (electrons + n > AtomUtil.HIGHESTATOM || electrons + n > GameManager.gameManager.targetElement.atomicNumber) return false;
         electrons += n;
         CheckElectronProtonBalance();
         //PrintStatus();
         ShellParticlePickedUp(particle);
         UpdateMass();
         onElectronsAdded?.Invoke(electrons - n, electrons, n, this);
+        return true;
     }
 
 
@@ -171,7 +179,10 @@ public class AtomScript : MonoBehaviour
                 countdown.color = Color.blue;
 
             float animateInDuration = 0.3f;
-            float animateOutDuration = electronProtonBalanceDelay - animateInDuration;
+
+            float delay = Mathf.Max(electronProtonBalanceDelay - (Mathf.Abs(difference) - 1) * electronProtonDelayFalloff);
+
+            float animateOutDuration = delay - animateInDuration;
 
             countdown.StartAnimationDuration = animateInDuration;
 

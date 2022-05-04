@@ -17,7 +17,7 @@ public class ElectronScript : ParticleScript
 
     protected override void OnPlayerCollision(AtomScript player)
     {
-        player.addElectron(1,this);
+        if (!player.addElectron(1, this)) return;
         captured = true;
     }
 }

@@ -14,7 +14,7 @@ public class ProtonScript : ParticleScript
 
     protected override void OnPlayerCollision(AtomScript player)
     {
-        player.addProton(1,this);
+        if (!player.addProton(1, this)) return;
         captured = true;
     }
 }

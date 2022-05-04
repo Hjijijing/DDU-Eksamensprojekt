@@ -14,7 +14,7 @@ public class NeutronScript : ParticleScript
 
     protected override void OnPlayerCollision(AtomScript player)
     {
-        player.addNeutron(1,this);
+        if (!player.addNeutron(1, this)) return;
         captured = true;
     }
 }

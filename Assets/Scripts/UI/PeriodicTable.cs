@@ -85,7 +85,7 @@ public class PeriodicTable : MonoBehaviour
             float posY = -(margin.y + spacing.y * y + elementSizeY * y + offsetY);
 
             GameObject elementObject = Instantiate(elementPrefab, transform);
-            elementObject.AddComponent<ButtonEffect>();
+            elementObject.AddComponent<ButtonEffect>().effect = 1.5f;
 
             RectTransform rt = elementObject.transform as RectTransform;
             rt.anchoredPosition = new Vector2(posX, posY);

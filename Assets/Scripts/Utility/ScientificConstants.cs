@@ -20,7 +20,7 @@ public class ScientificConstants : MonoBehaviour
     public Color halogenColor;
     public Color lanthanideColor;
     public Color actinideColor;
-    public Color transactinideColor;
+    public Color unknownColor;
     public Color lockedColor;
 
 
@@ -56,10 +56,10 @@ public class ScientificConstants : MonoBehaviour
                 return lanthanideColor;
             case "Actinide":
                 return actinideColor;
-            case "Transactinide":
-                return transactinideColor;
+            case "Unknown":
+                return unknownColor;
             default:
-                return Color.white;
+                return unknownColor;
         }
     }
 
