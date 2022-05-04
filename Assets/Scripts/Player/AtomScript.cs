@@ -180,7 +180,7 @@ public class AtomScript : MonoBehaviour
 
             float animateInDuration = 0.3f;
 
-            float delay = Mathf.Max(electronProtonBalanceDelay - (Mathf.Abs(difference) - 1) * electronProtonDelayFalloff);
+            float delay = Mathf.Max(electronProtonMinimumDelay, electronProtonBalanceDelay - ((float)(Mathf.Abs(difference) - 1)) * electronProtonDelayFalloff);
 
             float animateOutDuration = delay - animateInDuration;
 
