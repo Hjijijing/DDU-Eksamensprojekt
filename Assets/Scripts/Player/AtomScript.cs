@@ -189,6 +189,7 @@ public class AtomScript : MonoBehaviour
 
             electronProtonAnimation
                 .floatCallback(1f, 0, (f) => { countdown.SetFill(f); }, animateOutDuration, animateInDuration)
+                .Wait(delay)
                 .then()
                 //.colorCallback(Color.green, new Color(0f, 0f, 0f, 0f), (c) => { sr.material.color = c; }, electronProtonBalanceDelay)
                 //.then(electronProtonBalanceDelay)
@@ -203,6 +204,83 @@ public class AtomScript : MonoBehaviour
 
     }
 
+
+    /*void CheckElectronProtonBalance()
+    {
+        int difference = (int)electrons - (int)protons;
+
+        electronProtonAnimation?.revert();
+
+        if (Mathf.Abs(difference) >= maxElectronProtonDifference)
+        {
+            electronProtonAnimation = new TweeningAnimation(this, gameObject);
+
+            float delay = Mathf.Max(electronProtonMinimumDelay, electronProtonBalanceDelay - ((float)(Mathf.Abs(difference) - 1)) * electronProtonDelayFalloff);
+
+            electronProtonAnimation
+                .Wait(delay)
+                .then()
+                .call(UnstableForTooLong)
+                .Start();
+        }
+    }*/
+
+    //void CheckIsotope()
+    //{
+    //    Isotope newIsotope = IsotopeManager.isotopeManager.GetIsotope((int)protons, (int)neutrons);
+    //    isotope = newIsotope;
+
+    //    isotopeAnimation?.revert();
+
+
+
+    //    if(newIsotope == null || newIsotope.half_life != 0f)
+    //    { 
+    //        float halfLife = IsotopeManager.isotopeManager.lowestHalflife;
+    //        if (newIsotope != null) halfLife = newIsotope.half_life;
+
+    //        float duration = IsotopeManager.isotopeManager.MapHalfLife(halfLife, halfLifeRange.x, halfLifeRange.y);
+
+
+    //        isotopeAnimation = new TweeningAnimation(this, gameObject);
+    //        Countdown countdown = Instantiate(countdownPrefab, canvas.transform).GetComponent<Countdown>();
+    //        countdown.y = -200;
+
+    //        IsotopeManager.PICKUP_FOR_STABLE whatToPickUp = IsotopeManager.isotopeManager.findPickupForCore(protons, neutrons);
+    //        Color c = new Color(255f, 140f, 0f);
+    //        if (whatToPickUp == IsotopeManager.PICKUP_FOR_STABLE.PROTON)
+    //            c = Color.red;
+    //        else if (whatToPickUp == IsotopeManager.PICKUP_FOR_STABLE.NEUTRON)
+    //            c = Color.yellow;
+
+    //        countdown.color = c;
+
+    //        float animateInDuration = 0.3f;
+    //        float animateOutDuration = duration - animateInDuration;
+
+    //        countdown.StartAnimationDuration = animateInDuration;
+
+    //        isotopeAnimation
+    //            .floatCallback(1f, 0, (f) => { countdown.SetFill(f); }, animateOutDuration, animateInDuration)
+    //            .then()
+    //            //.Wait(duration)
+    //            //.scale(Vector3.zero, duration)
+    //            //.from(Vector3.one)
+    //            //.then(duration)
+    //            .call(UnstableForTooLong);
+
+    //        void destroyCountdown() { countdown.Remove(); isotopeAnimation.onRevert -= destroyCountdown; };
+
+    //        isotopeAnimation.onRevert += destroyCountdown;
+
+    //        isotopeAnimation.Start();
+    //    }
+
+
+    //}
+
+
+
     void CheckIsotope()
     {
         Isotope newIsotope = IsotopeManager.isotopeManager.GetIsotope((int)protons, (int)neutrons);
@@ -210,52 +288,25 @@ public class AtomScript : MonoBehaviour
 
         isotopeAnimation?.revert();
 
-        
-        
-        if(newIsotope == null || newIsotope.half_life != 0f)
-        { 
+        if (newIsotope == null || newIsotope.half_life != 0f)
+        {
             float halfLife = IsotopeManager.isotopeManager.lowestHalflife;
             if (newIsotope != null) halfLife = newIsotope.half_life;
 
-            float duration = IsotopeManager.isotopeManager.MapHalfLife(halfLife, halfLifeRange.x, halfLifeRange.y);
+            float delay = IsotopeManager.isotopeManager.MapHalfLife(halfLife, halfLifeRange.x, halfLifeRange.y);
 
 
             isotopeAnimation = new TweeningAnimation(this, gameObject);
-            Countdown countdown = Instantiate(countdownPrefab, canvas.transform).GetComponent<Countdown>();
-            countdown.y = -200;
-
-            IsotopeManager.PICKUP_FOR_STABLE whatToPickUp = IsotopeManager.isotopeManager.findPickupForCore(protons, neutrons);
-            Color c = new Color(255f, 140f, 0f);
-            if (whatToPickUp == IsotopeManager.PICKUP_FOR_STABLE.PROTON)
-                c = Color.red;
-            else if (whatToPickUp == IsotopeManager.PICKUP_FOR_STABLE.NEUTRON)
-                c = Color.yellow;
-
-            countdown.color = c;
-
-            float animateInDuration = 0.3f;
-            float animateOutDuration = duration - animateInDuration;
-
-            countdown.StartAnimationDuration = animateInDuration;
 
             isotopeAnimation
-                .floatCallback(1f, 0, (f) => { countdown.SetFill(f); }, animateOutDuration, animateInDuration)
+                .Wait(delay)
                 .then()
-                //.Wait(duration)
-                //.scale(Vector3.zero, duration)
-                //.from(Vector3.one)
-                //.then(duration)
-                .call(UnstableForTooLong);
-
-            void destroyCountdown() { countdown.Remove(); isotopeAnimation.onRevert -= destroyCountdown; };
-
-            isotopeAnimation.onRevert += destroyCountdown;
-
-            isotopeAnimation.Start();
+                .call(UnstableForTooLong)
+                .Start();
         }
-
-
     }
+
+
 
 
     void CoreParticlePickedUp(ParticleScript ps)

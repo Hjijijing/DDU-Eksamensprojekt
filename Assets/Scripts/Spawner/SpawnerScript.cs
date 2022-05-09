@@ -28,15 +28,19 @@ public class SpawnerScript : MonoBehaviour
     }
 
 
+
+    //Fjerner partikler der er samlet op eller for langt væk
     void RemoveParticles()
     {
         for(int i = particles.Count - 1; i > -1; i--)
         {
+            //Fjerner partikler der er samlet op
             if (particles[i].captured)
             {
                 particles.RemoveAt(i);
             } else
-            //If destroyed, picked up or to far away
+            
+            //Fjern partikler der er for langt væk eller er blevet slettet
             if (particles[i] == null || Vector3.Distance(particles[i].transform.position, player.transform.position) > maxRadius )
             {
                 Destroy(particles[i].gameObject);
@@ -45,7 +49,7 @@ public class SpawnerScript : MonoBehaviour
         }
     }
 
-
+    //Spawner partikler
     void SpawnParticles()
     {
         for (int i = particles.Count; i < maxParticles; i++)
