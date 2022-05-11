@@ -225,62 +225,6 @@ public class AtomScript : MonoBehaviour
         }
     }*/
 
-    //void CheckIsotope()
-    //{
-    //    Isotope newIsotope = IsotopeManager.isotopeManager.GetIsotope((int)protons, (int)neutrons);
-    //    isotope = newIsotope;
-
-    //    isotopeAnimation?.revert();
-
-
-
-    //    if(newIsotope == null || newIsotope.half_life != 0f)
-    //    { 
-    //        float halfLife = IsotopeManager.isotopeManager.lowestHalflife;
-    //        if (newIsotope != null) halfLife = newIsotope.half_life;
-
-    //        float duration = IsotopeManager.isotopeManager.MapHalfLife(halfLife, halfLifeRange.x, halfLifeRange.y);
-
-
-    //        isotopeAnimation = new TweeningAnimation(this, gameObject);
-    //        Countdown countdown = Instantiate(countdownPrefab, canvas.transform).GetComponent<Countdown>();
-    //        countdown.y = -200;
-
-    //        IsotopeManager.PICKUP_FOR_STABLE whatToPickUp = IsotopeManager.isotopeManager.findPickupForCore(protons, neutrons);
-    //        Color c = new Color(255f, 140f, 0f);
-    //        if (whatToPickUp == IsotopeManager.PICKUP_FOR_STABLE.PROTON)
-    //            c = Color.red;
-    //        else if (whatToPickUp == IsotopeManager.PICKUP_FOR_STABLE.NEUTRON)
-    //            c = Color.yellow;
-
-    //        countdown.color = c;
-
-    //        float animateInDuration = 0.3f;
-    //        float animateOutDuration = duration - animateInDuration;
-
-    //        countdown.StartAnimationDuration = animateInDuration;
-
-    //        isotopeAnimation
-    //            .floatCallback(1f, 0, (f) => { countdown.SetFill(f); }, animateOutDuration, animateInDuration)
-    //            .then()
-    //            //.Wait(duration)
-    //            //.scale(Vector3.zero, duration)
-    //            //.from(Vector3.one)
-    //            //.then(duration)
-    //            .call(UnstableForTooLong);
-
-    //        void destroyCountdown() { countdown.Remove(); isotopeAnimation.onRevert -= destroyCountdown; };
-
-    //        isotopeAnimation.onRevert += destroyCountdown;
-
-    //        isotopeAnimation.Start();
-    //    }
-
-
-    //}
-
-
-
     void CheckIsotope()
     {
         Isotope newIsotope = IsotopeManager.isotopeManager.GetIsotope((int)protons, (int)neutrons);
@@ -288,23 +232,79 @@ public class AtomScript : MonoBehaviour
 
         isotopeAnimation?.revert();
 
+
+
         if (newIsotope == null || newIsotope.half_life != 0f)
         {
             float halfLife = IsotopeManager.isotopeManager.lowestHalflife;
             if (newIsotope != null) halfLife = newIsotope.half_life;
 
-            float delay = IsotopeManager.isotopeManager.MapHalfLife(halfLife, halfLifeRange.x, halfLifeRange.y);
+            float duration = IsotopeManager.isotopeManager.MapHalfLife(halfLife, halfLifeRange.x, halfLifeRange.y);
 
 
             isotopeAnimation = new TweeningAnimation(this, gameObject);
+            Countdown countdown = Instantiate(countdownPrefab, canvas.transform).GetComponent<Countdown>();
+            countdown.y = -200;
+
+            IsotopeManager.PICKUP_FOR_STABLE whatToPickUp = IsotopeManager.isotopeManager.findPickupForCore(protons, neutrons);
+            Color c = new Color(255f, 140f, 0f);
+            if (whatToPickUp == IsotopeManager.PICKUP_FOR_STABLE.PROTON)
+                c = Color.red;
+            else if (whatToPickUp == IsotopeManager.PICKUP_FOR_STABLE.NEUTRON)
+                c = Color.yellow;
+
+            countdown.color = c;
+
+            float animateInDuration = 0.3f;
+            float animateOutDuration = duration - animateInDuration;
+
+            countdown.StartAnimationDuration = animateInDuration;
 
             isotopeAnimation
-                .Wait(delay)
+                .floatCallback(1f, 0, (f) => { countdown.SetFill(f); }, animateOutDuration, animateInDuration)
                 .then()
-                .call(UnstableForTooLong)
-                .Start();
+                //.Wait(duration)
+                //.scale(Vector3.zero, duration)
+                //.from(Vector3.one)
+                //.then(duration)
+                .call(UnstableForTooLong);
+
+            void destroyCountdown() { countdown.Remove(); isotopeAnimation.onRevert -= destroyCountdown; };
+
+            isotopeAnimation.onRevert += destroyCountdown;
+
+            isotopeAnimation.Start();
         }
+
+
     }
+
+
+
+    //void CheckIsotope()
+    //{
+    //    Isotope newIsotope = IsotopeManager.isotopeManager.GetIsotope((int)protons, (int)neutrons);
+    //    isotope = newIsotope;
+
+    //    isotopeAnimation?.revert();
+
+    //    if (newIsotope == null || newIsotope.half_life != 0f)
+    //    {
+    //        float halfLife = IsotopeManager.isotopeManager.lowestHalflife;
+    //        if (newIsotope != null) halfLife = newIsotope.half_life;
+
+    //        float delay = IsotopeManager.isotopeManager.MapHalfLife(halfLife, halfLifeRange.x, halfLifeRange.y);
+
+
+    //        isotopeAnimation = new TweeningAnimation(this, gameObject);
+
+    //        isotopeAnimation
+    //            .Wait(delay)
+    //            .then()
+    //            .call(UnstableForTooLong)
+    //            .Start();
+    //    }
+    //}
 
 
 

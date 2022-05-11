@@ -12,9 +12,7 @@ public class ElementImporter : MonoBehaviour
     public void CreateElementFiles()
     {
         string filePath = Application.dataPath + "/Elements/elements.csv";
-
         string fullString = File.ReadAllText(filePath);
-
         string[] lines = fullString.Split('\n');
 
         for (int i = 1; i < lines.Length-1; i++)
@@ -37,16 +35,12 @@ public class ElementImporter : MonoBehaviour
             element.period = int.TryParse(values[7], out int period) ? period : -1;
             element.group = int.TryParse(values[8], out int group) ? group: -1;
             AssetDatabase.CreateAsset(element, savePath);
-
             } catch(FormatException e)
             {
                 Debug.Log("Import error on csv line" + (i + 1));
                 Debug.LogError(e);
-            }
-
-            
+            }   
         }
-
         AssetDatabase.SaveAssets();
     }
 
