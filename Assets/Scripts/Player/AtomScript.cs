@@ -280,7 +280,6 @@ public class AtomScript : MonoBehaviour
     }
 
 
-
     //void CheckIsotope()
     //{
     //    Isotope newIsotope = IsotopeManager.isotopeManager.GetIsotope((int)protons, (int)neutrons);
